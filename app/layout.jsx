@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Snack Mystery Box - Weekly Surprise Snack Subscriptions',
-  description: 'Discover rare imported snacks and drinks at 60-80% off. Weekly blind boxes delivered to your door. Fight food waste while exploring global flavors.',
+  title: 'Snack Mystery Box - Surprise Snack Subscriptions for your office',
+  description: 'Discover rare imported snacks and drinks at 40-60% off. Monthly fun boxes delivered to your door. Fight food waste while exploring global flavors.',
   keywords: 'snack subscription, mystery box, imported snacks, food waste, cheap snacks, blind box',
   openGraph: {
     title: 'Snack Mystery Box',

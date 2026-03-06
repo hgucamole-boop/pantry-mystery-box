@@ -82,7 +82,7 @@ export default function SnackBoxLanding() {
     {
       id: 'office',
       name: 'Office Legend',
-      price: '$549.99',
+      price: '$349.99',
       pax: '30+ pax',
       perHead: 'Bulk savings unlocked',
       description: 'Go big or go home. A massive monthly mystery box that turns your office pantry into the most talked-about spot in the building.',
@@ -93,8 +93,8 @@ export default function SnackBoxLanding() {
 
   const features = [
     { icon: '📦', title: 'Mystery Boxes', desc: 'Curated surprises delivered to your door' },
-    { icon: '🌍', title: 'Global Snacks', desc: 'Imported treats from around the world' },
-    { icon: '💰', title: 'Unbeatable Value', desc: 'Save 60-80% on retail prices' },
+    { icon: '🌍', title: 'Global Snacks', desc: 'Treats from around the world' },
+    { icon: '💰', title: 'Unbeatable Value', desc: 'Save 40-60% on retail prices' },
     { icon: '♻️', title: 'Fight Food Waste', desc: 'Near-expiry doesn\'t mean bad quality' },
     { icon: '🎁', title: 'Always Different', desc: 'New discoveries every delivery' },
     { icon: '🚚', title: 'Zero Effort', desc: 'No hunting, just unboxing joy' }
@@ -114,15 +114,15 @@ export default function SnackBoxLanding() {
           <span className="float-item">🧃</span>
         </div>
 
-        <div className="logo">SNACK MYSTERY BOX</div>
+        <div className="logo">Mari Makan</div>
         <h1 className="hero-title">
           DISCOVER.<br/>
           SAVE.<br/>
           SNACK.
         </h1>
         <p className="hero-subtitle">
-          Weekly blind boxes of <span className="highlight">rare imported snacks</span> and drinks 
-          at 60-80% off. Zero hunting. Pure discovery. Delivered to your door.
+          Monthly fun boxes of <span className="highlight">rare imported snacks</span> and drinks 
+          at 40-60% off. Zero hunting. Pure discovery. Delivered to your office doorstep.
         </p>
         <a href="#pricing" className="cta-button" onClick={() => trackEvent('cta_click', { location: 'hero' })}>
           START EXPLORING
