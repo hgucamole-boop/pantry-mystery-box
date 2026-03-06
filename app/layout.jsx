@@ -1,3 +1,5 @@
+import './globals.css';
+
 export const metadata = {
   title: 'Snack Mystery Box - Weekly Surprise Snack Subscriptions',
   description: 'Discover rare imported snacks and drinks at 60-80% off. Weekly blind boxes delivered to your door. Fight food waste while exploring global flavors.',
