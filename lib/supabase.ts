@@ -1,7 +1,13 @@
 // lib/supabase.ts
 // Supabase stub — no account needed yet
 
-export const supabase = null;
+export const supabase = {
+  auth: {
+    getSession: async () => ({ data: { session: null }, error: null }),
+    onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
+    signOut: async () => {},
+  }
+} as any;
 
 export type Profile = {
   id: string;
