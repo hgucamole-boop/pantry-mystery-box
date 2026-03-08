@@ -12,30 +12,30 @@ export interface SnackItemData {
 
 export const snackItems: SnackItemData[] = [
   // COMMON
-  { id: 1,  name: "Lays Original",               image: "/snacks/lays-original-real.png",      country: "🇺🇸", rarity: "COMMON",    value: "$1.50",  numericValue: 1.50 },
-  { id: 2,  name: "Mister Potato",                image: "/snacks/mister-potato.webp",           country: "🇲🇾", rarity: "COMMON",    value: "$1.80",  numericValue: 1.80 },
-  { id: 3,  name: "Julie's Biscuits",             image: "/snacks/julies-biscuits-real.png",     country: "🇲🇾", rarity: "COMMON",    value: "$2.00",  numericValue: 2.00 },
-  { id: 4,  name: "Tam Tam Crackers",             image: "/snacks/tam-tam-crackers.jpg",         country: "🇸🇬", rarity: "COMMON",    value: "$1.20",  numericValue: 1.20 },
-  { id: 5,  name: "Irvins Potato Chips",          image: "/snacks/irvins-potato-chips.webp",     country: "🇸🇬", rarity: "COMMON",    value: "$2.50",  numericValue: 2.50 },
-  { id: 19, name: "Eclipse Mints",                image: "/snacks/eclipse-mints-real.png",       country: "🇸🇬", rarity: "COMMON",    value: "$1.50",  numericValue: 1.50 },
+  { id: 1,  name: "Lays Original",               image: "/snacks/lays-original.png",                        country: "🇺🇸", rarity: "COMMON",    value: "$1.50",  numericValue: 1.50 },
+  { id: 2,  name: "Mister Potato",                image: "/snacks/mister-potato.webp",                       country: "🇲🇾", rarity: "COMMON",    value: "$1.80",  numericValue: 1.80 },
+  { id: 3,  name: "Julie's Biscuits",             image: "/snacks/julies-biscuits.png",                      country: "🇲🇾", rarity: "COMMON",    value: "$2.00",  numericValue: 2.00 },
+  { id: 4,  name: "Tam Tam Crackers",             image: "/snacks/tam-tam.jpg",                              country: "🇸🇬", rarity: "COMMON",    value: "$1.20",  numericValue: 1.20 },
+  { id: 5,  name: "Irvins Potato Chips",          image: "/snacks/SaltedEggPotatoChips_SEPC95_1300x1300.jpg",country: "🇸🇬", rarity: "COMMON",    value: "$2.50",  numericValue: 2.50 },
+  { id: 19, name: "Eclipse Mints",                image: "/snacks/eclipse-mints.png",                        country: "🇸🇬", rarity: "COMMON",    value: "$1.50",  numericValue: 1.50 },
   // RARE
-  { id: 6,  name: "Crispy M&M's",                 image: "/snacks/crispy-mms.jpg",               country: "🇺🇸", rarity: "RARE",      value: "$4.50",  numericValue: 4.50 },
-  { id: 7,  name: "Skittles Wild Berry",          image: "/snacks/skittles-wild-berry.png",      country: "🇺🇸", rarity: "RARE",      value: "$3.80",  numericValue: 3.80 },
-  { id: 8,  name: "Hello Panda Matcha",           image: "/snacks/hello-panda-matcha-real.jpg",  country: "🇯🇵", rarity: "RARE",      value: "$5.00",  numericValue: 5.00 },
-  { id: 9,  name: "Irvins Salted Egg Fish Skin",  image: "/snacks/irvins-fish-skin.webp",        country: "🇸🇬", rarity: "RARE",      value: "$8.00",  numericValue: 8.00 },
-  { id: 20, name: "Vietnam Cashews",              image: "/snacks/cashews.jpg",                  country: "🇻🇳", rarity: "RARE",      value: "$6.50",  numericValue: 6.50 },
+  { id: 6,  name: "Crispy M&M's",                 image: "/snacks/crispy-mms.jpg",                           country: "🇺🇸", rarity: "RARE",      value: "$4.50",  numericValue: 4.50 },
+  { id: 7,  name: "Skittles Wild Berry",          image: "/snacks/skittles-wild-berry.png",                  country: "🇺🇸", rarity: "RARE",      value: "$3.80",  numericValue: 3.80 },
+  { id: 8,  name: "Hello Panda Matcha",           image: "/snacks/hello-panda-matcha.jpg",                   country: "🇯🇵", rarity: "RARE",      value: "$5.00",  numericValue: 5.00 },
+  { id: 9,  name: "Irvins Salted Egg Fish Skin",  image: "/snacks/SaltedEggFishSkin_SEFS210_1300x1300.jpg",  country: "🇸🇬", rarity: "RARE",      value: "$8.00",  numericValue: 8.00 },
+  { id: 20, name: "Vietnam Cashews",              image: "/snacks/cashews.jpg",                              country: "🇻🇳", rarity: "RARE",      value: "$6.50",  numericValue: 6.50 },
   // EPIC
-  { id: 10, name: "Pocky Champagne",              image: "/snacks/pocky-champagne.jpg",          country: "🇯🇵", rarity: "EPIC",      value: "$9.90",  numericValue: 9.90 },
-  { id: 11, name: "Royce Nama Choco",             image: "/snacks/royce-nama-choco.jpg",         country: "🇯🇵", rarity: "EPIC",      value: "$12.00", numericValue: 12.00 },
-  { id: 12, name: "Korean Fire Noodles",          image: "/snacks/korean-fire-noodles.jpg",      country: "🇰🇷", rarity: "EPIC",      value: "$8.50",  numericValue: 8.50 },
-  { id: 13, name: "Taiwan Pineapple Cake",        image: "/snacks/taiwan-pineapple-cake.jpg",    country: "🇹🇼", rarity: "EPIC",      value: "$11.00", numericValue: 11.00 },
+  { id: 10, name: "Pocky Champagne",              image: "/snacks/pocky-champagne.jpg",                      country: "🇯🇵", rarity: "EPIC",      value: "$9.90",  numericValue: 9.90 },
+  { id: 11, name: "Royce Nama Choco",             image: "/snacks/royce-nama-choco.jpg",                     country: "🇯🇵", rarity: "EPIC",      value: "$12.00", numericValue: 12.00 },
+  { id: 12, name: "Korean Fire Noodles",          image: "/snacks/korean-fire-noodles.jpg",                  country: "🇰🇷", rarity: "EPIC",      value: "$8.50",  numericValue: 8.50 },
+  { id: 13, name: "Taiwan Pineapple Cake",        image: "/snacks/taiwan-pineapple-cake.jpg",                country: "🇹🇼", rarity: "EPIC",      value: "$11.00", numericValue: 11.00 },
   // LEGENDARY
-  { id: 14, name: "Wagyu Beef Jerky",             image: "/snacks/wagyu-beef-jerky.png",         country: "🇯🇵", rarity: "LEGENDARY", value: "$22.00", numericValue: 22.00 },
-  { id: 15, name: "Kinder Bueno White",           image: "/snacks/kinder-bueno-white.jpg",       country: "🇩🇪", rarity: "LEGENDARY", value: "$18.00", numericValue: 18.00 },
-  { id: 16, name: "Matcha KitKat Box",            image: "/snacks/matcha-kitkat.jpg",            country: "🇯🇵", rarity: "LEGENDARY", value: "$25.00", numericValue: 25.00 },
+  { id: 14, name: "Wagyu Beef Jerky",             image: "/snacks/royce-nama-choco.jpg",                     country: "🇯🇵", rarity: "LEGENDARY", value: "$22.00", numericValue: 22.00 },
+  { id: 15, name: "Kinder Bueno White",           image: "/snacks/kinder-bueno-white.jpg",                   country: "🇩🇪", rarity: "LEGENDARY", value: "$18.00", numericValue: 18.00 },
+  { id: 16, name: "Matcha KitKat Box",            image: "/snacks/matcha-kitkat.jpg",                        country: "🇯🇵", rarity: "LEGENDARY", value: "$25.00", numericValue: 25.00 },
   // ULTRA
-  { id: 17, name: "Meiji Premium Choco",          image: "/snacks/meiji-premium-choco.jpg",      country: "🇯🇵", rarity: "ULTRA",     value: "$45.00", numericValue: 45.00 },
-  { id: 18, name: "Taiwan Bubble Tea Kit",        image: "/snacks/taiwan-bubble-tea-kit.png",    country: "🇹🇼", rarity: "ULTRA",     value: "$38.00", numericValue: 38.00 },
+  { id: 17, name: "Meiji Premium Choco",          image: "/snacks/meiji-premium-choco.jpg",                  country: "🇯🇵", rarity: "ULTRA",     value: "$45.00", numericValue: 45.00 },
+  { id: 18, name: "Taiwan Bubble Tea Kit",        image: "/snacks/pocky-champagne.jpg",                      country: "🇹🇼", rarity: "ULTRA",     value: "$38.00", numericValue: 38.00 },
 ];
 
 export const rarityColors: Record<Rarity, string> = {
