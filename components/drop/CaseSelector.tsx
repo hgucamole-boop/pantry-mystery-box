@@ -1,3 +1,4 @@
+'use client';
 import { motion } from 'framer-motion';
 import { caseConfig, type Rarity, rarityColors } from '@/data/snackItems';
 import { useStore } from '@/store/useStore';
