@@ -12,8 +12,6 @@ export function SpinReel({ onResult }: SpinReelProps) {
   const selectedCase = useStore((state) => state.selectedCase);
   const isSpinning = useStore((state) => state.isSpinning);
   const setIsSpinning = useStore((state) => state.setIsSpinning);
-  const user = useStore((state) => state.user);
-  const updateCredits = useStore((state) => state.updateCredits);
   
   const [reelItems, setReelItems] = useState<SnackItemData[]>([]);
   const [resultItem, setResultItem] = useState<SnackItemData | null>(null);
@@ -41,17 +39,6 @@ export function SpinReel({ onResult }: SpinReelProps) {
 
   const handleSpin = () => {
     if (isSpinning || !canSpin) return;
-    
-    // Check credits
-    if (user && user.credits < config.credits) {
-      alert('Not enough credits!');
-      return;
-    }
-    
-    // Deduct credits if user is logged in
-    if (user) {
-      updateCredits(user.credits - config.credits);
-    }
     
     setIsSpinning(true);
     setResultItem(null);
@@ -148,14 +135,9 @@ export function SpinReel({ onResult }: SpinReelProps) {
           whileTap={{ scale: 0.95 }}
           className="px-12 py-4 bg-pink text-primary-foreground font-display text-2xl border-2 border-gold hover:glow-gold disabled:opacity-50 disabled:cursor-not-allowed transition-all"
         >
-          {isSpinning ? '🎰 SPINNING...' : `🎰 OPEN DROP (${config.credits} credits)`}
+          {isSpinning ? '🎰 SPINNING...' : `🎰 OPEN DROP`}
         </motion.button>
         
-        {!user && (
-          <p className="font-body text-sm text-muted-foreground">
-            Login to save your drops and earn credits!
-          </p>
-        )}
       </div>
     </div>
   );

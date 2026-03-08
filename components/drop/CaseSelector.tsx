@@ -50,9 +50,6 @@ export function CaseSelector({ onSelect }: CaseSelectorProps) {
               <div>
                 <h4 className="font-heading text-lg text-cream">{config.name}</h4>
                 <p className="font-display text-2xl text-pink">${config.price}</p>
-                <p className="font-body text-xs text-muted-foreground">
-                  {config.credits} credits
-                </p>
               </div>
             </div>
             
