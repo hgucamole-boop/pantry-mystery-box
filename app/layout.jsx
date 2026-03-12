@@ -1,5 +1,6 @@
 import './globals.css';
 import { SnackModalProvider } from './components/SnackModalProvider';
+import GTMProvider from "@/app/components/GTMProvider"
 
 export const metadata = {
   title: 'Snack Mystery Box - Surprise Snack Subscriptions for your office',
@@ -16,9 +17,11 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body style={{ margin: 0, padding: 0 }}>
+      <GTMProvider>
         <SnackModalProvider>
           {children}
         </SnackModalProvider>
+      </GTMProvider>
       </body>
     </html>
   );

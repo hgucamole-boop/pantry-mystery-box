@@ -13,11 +13,6 @@ import { ImpactCounter } from './components/ImpactCounter';
 export default function SnackBoxLanding() {
   const [selectedPlan, setSelectedPlan] = useState('team');
 
-  useEffect(() => {
-    const cleanup = loadGAScript();
-    return cleanup;
-  }, []);
-
   return (
     <div className="landing-container">
       <Navbar />

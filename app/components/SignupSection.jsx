@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { trackEvent } from '../utils/ga';
+import { getGTM } from '@/lib/gtm';
 
 export function SignupSection({ selectedPlan }) {
   const [email, setEmail] = useState('');
@@ -15,6 +16,13 @@ export function SignupSection({ selectedPlan }) {
     alert(`Thanks for subscribing to the ${selectedPlan} plan! We'll send confirmation to ${email}`);
     setEmail('');
     setIsSubmitting(false);
+
+    getGTM().then(gtm => gtm.dataLayer({
+      dataLayer: {
+        event: "button-click",
+        selectedPlan: selectedPlan
+      }
+    }))
   };
 
   return (
@@ -37,10 +45,10 @@ export function SignupSection({ selectedPlan }) {
           className="submit-btn"
           disabled={isSubmitting}
           onClick={() => {
-            trackEvent('subscribe_button_clicked', {
-              plan: selectedPlan,
-              button_text: isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE NOW',
-            });
+            // trackEvent('subscribe_button_clicked', {
+            //   plan: selectedPlan,
+            //   button_text: isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE NOW',
+            // });
           }}
         >
           {isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE NOW'}
