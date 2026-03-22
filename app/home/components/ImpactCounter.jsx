@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Package, Truck, Leaf } from 'lucide-react';
 
 function AnimatedNumber({ end, suffix = '', prefix = '', duration = 2000 }) {
   const [count, setCount] = useState(0);
@@ -43,9 +42,9 @@ function AnimatedNumber({ end, suffix = '', prefix = '', duration = 2000 }) {
 }
 
 const counters = [
-  { icon: Package, label: 'Snacks Saved', end: 48520, suffix: '+', color: 'pink' },
-  { icon: Truck, label: 'Boxes Delivered', end: 6230, suffix: '+', color: 'cyan' },
-  { icon: Leaf, label: 'Tonnes Diverted', end: 14, suffix: '.7t', color: 'gold' },
+  { label: 'Snacks Saved', end: 48520, suffix: '+', color: 'pink', photoLabel: 'Snack rescue photo' },
+  { label: 'Boxes Delivered', end: 6230, suffix: '+', color: 'cyan', photoLabel: 'Delivery photo' },
+  { label: 'Tonnes Diverted', end: 14, suffix: '.7t', color: 'gold', photoLabel: 'Impact photo' },
 ];
 
 export function ImpactCounter() {
@@ -68,18 +67,26 @@ export function ImpactCounter() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15 }}
             viewport={{ once: true }}
-            className="text-center p-6 rounded-xl border border-border bg-card group hover:border-muted-foreground transition-colors"
+            className="rounded-2xl border border-border bg-card overflow-hidden group hover:border-muted-foreground transition-colors"
           >
             <div
-              className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
-              style={{ background: `hsl(var(--${c.color}) / 0.1)` }}
+              className="h-44 md:h-48 border-b border-border/70 border-dashed flex items-center justify-center px-4"
+              style={{
+                borderColor: `hsl(var(--${c.color}) / 0.45)`,
+                background: `linear-gradient(160deg, hsl(var(--${c.color}) / 0.22), hsl(var(--${c.color}) / 0.07))`,
+                color: `hsl(var(--${c.color}))`,
+              }}
             >
-              <c.icon className="w-6 h-6" style={{ color: `hsl(var(--${c.color}))` }} />
+              <span className="font-body text-xs md:text-sm leading-tight tracking-[0.18em] uppercase text-center opacity-85">
+                {c.photoLabel}
+              </span>
             </div>
-            <div style={{ color: `hsl(var(--${c.color}))` }}>
-              <AnimatedNumber end={c.end} suffix={c.suffix} />
+            <div className="text-center p-5 md:p-6">
+              <div style={{ color: `hsl(var(--${c.color}))` }}>
+                <AnimatedNumber end={c.end} suffix={c.suffix} />
+              </div>
+              <p className="font-body text-sm text-muted-foreground mt-2">{c.label}</p>
             </div>
-            <p className="font-body text-sm text-muted-foreground mt-2">{c.label}</p>
           </motion.div>
         ))}
       </div>

@@ -1,4 +1,5 @@
 'use client';
+import '@/styles/home.css';
 import { useState, useEffect } from 'react';
 import { HeroSection } from '@/app/home/components/HeroSection';
 import { FeaturesSection } from '@/app/home/components/FeaturesSection';

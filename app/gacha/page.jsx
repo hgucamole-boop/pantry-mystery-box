@@ -12,12 +12,12 @@ import { snacks as SNACKS, rarity as RARITY } from "../../data/products"
 // ─── CONSTANTS (all deterministic — safe for SSR) ─────────────────────────────
 const CELL_H = 100;
 const RESULT_IDX = 28;
-const LIGHT_COLS = ["#FF2E63", "#FFD700", "#00D9FF", "#7FFF00", "#9B30FF"];
-const PARTICLE_EMOJIS = ["🍫", "🥔", "🐻", "⚡", "🍿", "🌶️", "🍪", "💥", "🎰", "🃏", "💎", "⭐", "🐉", "🌌", "✨"];
+const LIGHT_COLS = ["#2f855a", "#d3a84d", "#3f8f76", "#78a64f"];
+const PARTICLE_EMOJIS = ["🍫", "🥔", "🍿", "🌶️", "🍪", "🌿", "🌾", "🍃"];
 const TICKER_MSGS = [
   "SPIN TO WIN", "SNACK DROP LIVE", "6 SLOTS · 3 RARITIES",
   "3000+ BOXES DELIVERED", "LEGENDARY DROPS AVAILABLE",
-  "FREE SHIPPING", "JOIN THE SNACK CULT", "◆ JACKPOT SNACKS INSIDE",
+  "FREE SHIPPING", "SUSTAINABLE SNACK PICKS", "◆ SEASONAL SNACKS INSIDE",
 ];
 // Add this constant near the top with your other constants
 const BOX_PRICE = 199.99; // adjust as needed
@@ -159,20 +159,20 @@ function Reel({ reelIdx, result, onDone, spinTrigger }) {
   return (
     <div className="casino-scanlines" style={{
       width: CELL_H, height: CELL_H,
-      background: "#000",
+      background: "#f4faf2",
       border: `2px solid ${r.color}`,
       borderRadius: 10,
       overflow: "hidden",
       position: "relative",
       flexShrink: 0,
-      boxShadow: `inset 0 0 20px rgba(0,0,0,.8), 0 0 20px ${r.glow}`,
+      boxShadow: `inset 0 0 16px rgba(24,52,42,.16), 0 0 16px ${r.glow}`,
       transition: "border-color .4s, box-shadow .4s",
     }}>
       {/* Fades */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "30%", background: "linear-gradient(to bottom,rgba(0,0,0,.92),transparent)", zIndex: 15, pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "30%", background: "linear-gradient(to top,rgba(0,0,0,.92),transparent)", zIndex: 15, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "30%", background: "linear-gradient(to bottom,rgba(24,52,42,.28),transparent)", zIndex: 15, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "30%", background: "linear-gradient(to top,rgba(24,52,42,.28),transparent)", zIndex: 15, pointerEvents: "none" }} />
       {/* Payline */}
-      <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 2, transform: "translateY(-50%)", background: "#FF2E63", boxShadow: "0 0 10px #FF2E63", zIndex: 25, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 2, transform: "translateY(-50%)", background: "#2f855a", boxShadow: "0 0 8px rgba(47,133,90,.45)", zIndex: 25, pointerEvents: "none" }} />
 
       {/* Strip */}
       <div ref={stripRef} style={{ display: "flex", flexDirection: "column", willChange: "transform" }}>
@@ -235,13 +235,13 @@ function ResultCard({ snack, delay }) {
 function Particles() {
   const [list, setList] = useState([]);
   useEffect(() => {
-    setList(Array.from({ length: 22 }, (_, i) => ({
+    setList(Array.from({ length: 8 }, (_, i) => ({
       id: i,
       emoji: PARTICLE_EMOJIS[i % PARTICLE_EMOJIS.length],
       left: Math.random() * 100,
-      dur: 6 + Math.random() * 10,
+      dur: 10 + Math.random() * 12,
       delay: Math.random() * 12,
-      size: 0.7 + Math.random() * 1.2,
+      size: 0.8 + Math.random() * 0.6,
     })));
   }, []);
 
@@ -313,12 +313,8 @@ export default function SnackCasino() {
 
   return (
     <>
-      {/* Flash overlays — driven by client state only, not rendered on server */}
-      {flashType === "normal" && <div className="casino-jackpot-flash" style={{ position: "fixed", inset: 0, background: "rgba(255,215,0,.12)", zIndex: 200, pointerEvents: "none" }} />}
-      {flashType === "legendary" && <div className="casino-legendary-flash" style={{ position: "fixed", inset: 0, background: "linear-gradient(135deg,rgba(255,46,99,.2),rgba(255,175,0,.2),rgba(155,48,255,.2))", zIndex: 200, pointerEvents: "none" }} />}
-
       {/* Background */}
-      <div style={{ position: "fixed", inset: 0, zIndex: 0, background: "radial-gradient(ellipse 80% 60% at 15% 10%,rgba(255,46,99,.14) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 90%,rgba(0,217,255,.11) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 50% 50%,rgba(155,48,255,.07) 0%,transparent 70%),#0d0d1a" }}>
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, background: "radial-gradient(ellipse 80% 60% at 15% 10%,rgba(47,133,90,.1) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 90%,rgba(63,143,118,.09) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 50% 50%,rgba(211,168,77,.06) 0%,transparent 70%),#eef7ec" }}>
         <div className="casino-grid-bg" style={{ position: "absolute", inset: 0 }} />
       </div>
 
@@ -329,11 +325,11 @@ export default function SnackCasino() {
 
         {/* Header */}
         <header style={{ textAlign: "center", marginBottom: "1.5rem", marginTop: "100px" }}>
-          <h1 className="casino-title-flicker" style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(3.5rem,12vw,8rem)", lineHeight: .85, letterSpacing: 4 }}>
+          <h1 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(3.5rem,12vw,8rem)", lineHeight: .85, letterSpacing: 4 }}>
             <span className="casino-shimmer-text">SNACK<br />PREVIEW</span>
           </h1>
-          <p style={{ fontSize: "clamp(.75rem,2vw,1rem)", color: "rgba(255,245,225,.55)", marginTop: ".75rem", letterSpacing: 1 }}>
-            Check out what's in our drop this month. <span style={{ color: "#FFD700", fontWeight: 700 }}>Preview your box.</span> Every pull is a surprise.
+          <p style={{ fontSize: "clamp(.75rem,2vw,1rem)", color: "rgba(24,52,42,.62)", marginTop: ".75rem", letterSpacing: 1 }}>
+            Check out what's in our drop this month. <span style={{ color: "#2f855a", fontWeight: 700 }}>Preview your box.</span> Every pull is a surprise.
           </p>
           {/* Rarity legend */}
           <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem", flexWrap: "wrap" }}>
@@ -353,35 +349,35 @@ export default function SnackCasino() {
         </header>
 
         {/* Ticker — TICKER_MSGS doubled as a static literal; identical on server and client */}
-        <div style={{ width: "100%", maxWidth: 900, overflow: "hidden", borderTop: "1px solid rgba(255,215,0,.2)", borderBottom: "1px solid rgba(255,215,0,.2)", padding: ".45rem 0", marginBottom: "1.5rem" }}>
-          <div style={{ display: "flex", whiteSpace: "nowrap", animation: "tickerScroll 20s linear infinite", fontSize: ".7rem", letterSpacing: 3, color: "rgba(255,215,0,.55)" }}>
+        <div style={{ width: "100%", maxWidth: 900, overflow: "hidden", borderTop: "1px solid rgba(47,133,90,.25)", borderBottom: "1px solid rgba(47,133,90,.25)", padding: ".45rem 0", marginBottom: "1.5rem" }}>
+          <div style={{ display: "flex", whiteSpace: "nowrap", animation: "tickerScroll 32s linear infinite", fontSize: ".7rem", letterSpacing: 3, color: "rgba(47,133,90,.65)" }}>
             {[...TICKER_MSGS, ...TICKER_MSGS].map((t, i) => (
-              <span key={i} style={{ padding: "0 2rem" }}>{t}<span style={{ marginLeft: "2rem", color: "#FF2E63" }}>◆</span></span>
+              <span key={i} style={{ padding: "0 2rem" }}>{t}<span style={{ marginLeft: "2rem", color: "#d3a84d" }}>◆</span></span>
             ))}
           </div>
         </div>
 
         {/* Machine */}
         <div style={{ width: "100%", maxWidth: 900 }}>
-          <div style={{ background: "linear-gradient(160deg,#14142a 0%,#1c1c38 50%,#12121f 100%)", border: "3px solid #FF2E63", borderRadius: 24, padding: "clamp(1.5rem,4vw,2.5rem) clamp(1rem,3vw,2rem)", position: "relative", boxShadow: "0 0 0 1px rgba(255,46,99,.3),0 0 50px rgba(255,46,99,.2),0 0 100px rgba(255,46,99,.08),inset 0 1px 0 rgba(255,255,255,.04)" }}>
+          <div style={{ background: "linear-gradient(160deg,#f7fcf5 0%,#edf7ea 50%,#e7f3e3 100%)", border: "2px solid #2f855a", borderRadius: 24, padding: "clamp(1.5rem,4vw,2.5rem) clamp(1rem,3vw,2rem)", position: "relative", boxShadow: "0 0 0 1px rgba(47,133,90,.22),0 18px 42px rgba(31,74,58,.13),inset 0 1px 0 rgba(255,255,255,.65)" }}>
 
             {/* Corner diamonds */}
             {[["top", "left"], ["top", "right"], ["bottom", "left"], ["bottom", "right"]].map(([v, h], i) => (
-              <div key={i} style={{ position: "absolute", [v]: "-.7rem", [h]: "1.5rem", fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.1rem", color: "#FFD700", filter: "drop-shadow(0 0 8px #FFD700)" }}>◆</div>
+              <div key={i} style={{ position: "absolute", [v]: "-.7rem", [h]: "1.5rem", fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.1rem", color: "#d3a84d", filter: "drop-shadow(0 0 5px rgba(211,168,77,.45))" }}>◆</div>
             ))}
 
-            <div className="casino-float-badge" style={{ position: "absolute", top: "1rem", right: "1.2rem", background: "#FF2E63", color: "white", fontFamily: "'Bebas Neue',sans-serif", fontSize: ".8rem", letterSpacing: 2, padding: ".25rem .8rem", borderRadius: 4, boxShadow: "0 0 15px rgba(255,46,99,.5)" }}>
+            <div style={{ position: "absolute", top: "1rem", right: "1.2rem", background: "#2f855a", color: "#f5fcf3", fontFamily: "'Bebas Neue',sans-serif", fontSize: ".8rem", letterSpacing: 2, padding: ".25rem .8rem", borderRadius: 4, boxShadow: "0 0 10px rgba(47,133,90,.28)" }}>
               SNACK DROP ◆ V2
             </div>
 
             {/* Marquee lights — Array.from length is a static literal → identical on server & client */}
             <div style={{ display: "flex", justifyContent: "center", gap: ".5rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
               {Array.from({ length: 28 }, (_, i) => (
-                <div key={i} style={{ width: 12, height: 12, borderRadius: "50%", background: LIGHT_COLS[i % LIGHT_COLS.length], boxShadow: `0 0 7px ${LIGHT_COLS[i % LIGHT_COLS.length]}`, border: "2px solid rgba(255,255,255,.15)", animation: `mBlink .8s ${(i * 0.07).toFixed(2)}s infinite` }} />
+                <div key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: LIGHT_COLS[i % LIGHT_COLS.length], boxShadow: `0 0 4px ${LIGHT_COLS[i % LIGHT_COLS.length]}`, border: "1px solid rgba(255,255,255,.6)", animation: `mBlink 2.2s ${(i * 0.09).toFixed(2)}s infinite` }} />
               ))}
             </div>
 
-            <div style={{ textAlign: "center", fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.3rem", letterSpacing: 4, color: "#FFD700", marginBottom: "1.5rem", textShadow: "0 0 20px rgba(255,215,0,.5)" }}>
+            <div style={{ textAlign: "center", fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.3rem", letterSpacing: 4, color: "#2f855a", marginBottom: "1.5rem", textShadow: "0 0 10px rgba(47,133,90,.18)" }}>
               — SPIN TO BUILD YOUR BOX —
             </div>
 
@@ -389,7 +385,7 @@ export default function SnackCasino() {
             <div style={{ display: "flex", justifyContent: "center", gap: "clamp(.4rem,1.5vw,1rem)", marginBottom: "1.5rem", flexWrap: "wrap" }}>
               {Array.from({ length: 6 }, (_, i) => (
                 <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: ".35rem" }}>
-                  <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".7rem", letterSpacing: 2, color: "#00D9FF", opacity: .65 }}>SLOT {i + 1}</div>
+                  <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".7rem", letterSpacing: 2, color: "#3f8f76", opacity: .78 }}>SLOT {i + 1}</div>
                   <Reel
                     reelIdx={i}
                     result={pendingResults?.[i] ?? SNACKS[i]}
@@ -404,22 +400,22 @@ export default function SnackCasino() {
 
             {/* Spin button */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
-              <button onClick={spin} disabled={isSpinning} style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(1.3rem,4vw,1.9rem)", letterSpacing: 4, padding: "clamp(.8rem,2vw,1.1rem) clamp(2rem,6vw,4rem)", background: isSpinning ? "linear-gradient(135deg,#c0145a,#FF2E63)" : "linear-gradient(135deg,#FF2E63,#c0145a)", color: "white", border: "3px solid #FFD700", borderRadius: 8, cursor: isSpinning ? "not-allowed" : "pointer", boxShadow: isSpinning ? "0 2px 0 #8b0c3a,0 4px 15px rgba(255,46,99,.4)" : "0 6px 0 #8b0c3a,0 8px 25px rgba(255,46,99,.5)", transition: "all .15s ease", textShadow: "0 2px 4px rgba(0,0,0,.4)", animation: isSpinning ? "spinBtn .1s infinite" : "none", opacity: isSpinning ? .75 : 1 }}>
-                {isSpinning ? "⚡ SPINNING..." : "🎰 PULL THE LEVER"}
+              <button onClick={spin} disabled={isSpinning} style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(1.3rem,4vw,1.9rem)", letterSpacing: 4, padding: "clamp(.8rem,2vw,1.1rem) clamp(2rem,6vw,4rem)", background: isSpinning ? "linear-gradient(135deg,#2c7d54,#236643)" : "linear-gradient(135deg,#2f855a,#266f49)", color: "#f6fcf4", border: "2px solid #d3a84d", borderRadius: 8, cursor: isSpinning ? "not-allowed" : "pointer", boxShadow: isSpinning ? "0 2px 0 #1f5638,0 4px 12px rgba(47,133,90,.28)" : "0 6px 0 #1f5638,0 8px 20px rgba(47,133,90,.35)", transition: "all .15s ease", textShadow: "0 1px 2px rgba(0,0,0,.2)", animation: isSpinning ? "none" : "none", opacity: isSpinning ? .75 : 1 }}>
+                {isSpinning ? "SPINNING..." : "PULL THE LEVER"}
               </button>
-              <span style={{ fontSize: ".7rem", color: "rgba(255,245,225,.4)", letterSpacing: 2 }}>
-                SPINS: <span style={{ color: "#FFD700", fontWeight: 700 }}>{spinCount}</span>
+              <span style={{ fontSize: ".7rem", color: "rgba(24,52,42,.52)", letterSpacing: 2 }}>
+                SPINS: <span style={{ color: "#2f855a", fontWeight: 700 }}>{spinCount}</span>
               </span>
             </div>
 
             {/* Luck meter */}
             <div style={{ marginTop: "1.5rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: ".4rem" }}>
-                <span style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".85rem", letterSpacing: 3, color: "#00D9FF" }}>🔥 LUCK METER</span>
-                <span style={{ fontSize: ".7rem", color: "#FFD700", fontWeight: 700 }}>{luckPct}%</span>
+                <span style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".85rem", letterSpacing: 3, color: "#3f8f76" }}>LUCK METER</span>
+                <span style={{ fontSize: ".7rem", color: "#d3a84d", fontWeight: 700 }}>{luckPct}%</span>
               </div>
-              <div style={{ height: 8, background: "rgba(255,255,255,.07)", borderRadius: 99, overflow: "hidden", border: "1px solid rgba(0,217,255,.2)" }}>
-                <div style={{ height: "100%", width: `${luckPct}%`, background: "linear-gradient(90deg,#00D9FF,#7FFF00)", borderRadius: 99, transition: "width .8s cubic-bezier(.34,1.2,.64,1)", boxShadow: "0 0 10px rgba(0,217,255,.5)" }} />
+              <div style={{ height: 8, background: "rgba(47,133,90,.12)", borderRadius: 99, overflow: "hidden", border: "1px solid rgba(47,133,90,.28)" }}>
+                <div style={{ height: "100%", width: `${luckPct}%`, background: "linear-gradient(90deg,#3f8f76,#78a64f)", borderRadius: 99, transition: "width .8s cubic-bezier(.34,1.2,.64,1)", boxShadow: "0 0 8px rgba(63,143,118,.35)" }} />
               </div>
             </div>
 
@@ -428,8 +424,8 @@ export default function SnackCasino() {
 
         {/* Result panel */}
         <div style={{ width: "100%", maxWidth: 900, marginTop: "2rem", opacity: showResults ? 1 : 0, transform: showResults ? "translateY(0)" : "translateY(30px)", transition: "all .6s cubic-bezier(.34,1.56,.64,1)", pointerEvents: showResults ? "all" : "none" }}>
-          <div style={{ background: hasLegendary ? "linear-gradient(160deg,rgba(255,215,0,.1),rgba(155,48,255,.06))" : "linear-gradient(160deg,rgba(255,215,0,.07),rgba(0,217,255,.04))", border: "2px solid #FFD700", borderRadius: 20, padding: "2rem", position: "relative", boxShadow: hasLegendary ? "0 0 0 1px rgba(255,215,0,.2),0 0 50px rgba(255,215,0,.2),0 0 100px rgba(155,48,255,.1)" : "0 0 0 1px rgba(255,215,0,.15),0 0 40px rgba(255,215,0,.1)" }}>
-            <div style={{ position: "absolute", top: "-1rem", left: "50%", transform: "translateX(-50%)", background: hasLegendary ? "linear-gradient(90deg,#FF2E63,#FFD700,#FF2E63)" : "#FFD700", backgroundSize: "200% auto", animation: hasLegendary ? "shimmer 2s linear infinite" : "none", color: "#0d0d1a", fontFamily: "'Bebas Neue',sans-serif", fontSize: ".95rem", letterSpacing: 3, padding: ".3rem 1.5rem", whiteSpace: "nowrap", borderRadius: 4, boxShadow: "0 4px 15px rgba(255,215,0,.4)" }}>
+          <div style={{ background: hasLegendary ? "linear-gradient(160deg,rgba(211,168,77,.14),rgba(63,143,118,.08))" : "linear-gradient(160deg,rgba(211,168,77,.1),rgba(63,143,118,.07))", border: "2px solid #d3a84d", borderRadius: 20, padding: "2rem", position: "relative", boxShadow: hasLegendary ? "0 0 0 1px rgba(211,168,77,.2),0 0 28px rgba(211,168,77,.18),0 0 60px rgba(63,143,118,.12)" : "0 0 0 1px rgba(211,168,77,.16),0 0 24px rgba(211,168,77,.1)" }}>
+            <div style={{ position: "absolute", top: "-1rem", left: "50%", transform: "translateX(-50%)", background: hasLegendary ? "linear-gradient(90deg,#2f855a,#d3a84d,#2f855a)" : "#d3a84d", backgroundSize: "200% auto", animation: hasLegendary ? "shimmer 3s linear infinite" : "none", color: "#133224", fontFamily: "'Bebas Neue',sans-serif", fontSize: ".95rem", letterSpacing: 3, padding: ".3rem 1.5rem", whiteSpace: "nowrap", borderRadius: 4, boxShadow: "0 3px 10px rgba(211,168,77,.35)" }}>
               {hasLegendary ? "⭐ LEGENDARY BOX UNLOCKED ⭐" : "🎰 YOUR SNACK BOX IS READY"}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1rem", marginTop: "1rem" }}>
@@ -438,42 +434,42 @@ export default function SnackCasino() {
             <div style={{
               display: "flex", justifyContent: "center", alignItems: "center",
               gap: "2rem", margin: "1.5rem 0 0", flexWrap: "wrap",
-              background: "rgba(0,0,0,.3)", border: "1px solid rgba(255,215,0,.15)",
+              background: "rgba(255,255,255,.68)", border: "1px solid rgba(47,133,90,.16)",
               borderRadius: 12, padding: "1rem 1.5rem",
             }}>
               <div style={{ textAlign: "center" }}>
-                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".7rem", letterSpacing: 3, color: "rgba(255,245,225,.4)", marginBottom: ".2rem" }}>
+                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".7rem", letterSpacing: 3, color: "rgba(24,52,42,.45)", marginBottom: ".2rem" }}>
                   BOX VALUE
                 </div>
-                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.6rem", color: "#00D9FF", letterSpacing: 2 }}>
+                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.6rem", color: "#3f8f76", letterSpacing: 2 }}>
                   ${totalValue.toFixed(2)}
                 </div>
               </div>
 
               <div style={{ textAlign: "center" }}>
-                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".7rem", letterSpacing: 3, color: "rgba(255,245,225,.4)", marginBottom: ".2rem" }}>
+                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".7rem", letterSpacing: 3, color: "rgba(24,52,42,.45)", marginBottom: ".2rem" }}>
                   YOU PAY
                 </div>
-                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.6rem", color: "#FFD700", letterSpacing: 2 }}>
+                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.6rem", color: "#d3a84d", letterSpacing: 2 }}>
                   ${BOX_PRICE.toFixed(2)}
                 </div>
               </div>
 
               <div style={{ textAlign: "center" }}>
-                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".7rem", letterSpacing: 3, color: "rgba(255,245,225,.4)", marginBottom: ".2rem" }}>
+                <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: ".7rem", letterSpacing: 3, color: "rgba(24,52,42,.45)", marginBottom: ".2rem" }}>
                   YOU SAVE
                 </div>
                 <div style={{
                   fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.6rem", letterSpacing: 2,
-                  color: isGoodDeal ? "#7FFF00" : "#FF2E63",
+                  color: isGoodDeal ? "#4c9b52" : "#a84e3c",
                 }}>
                   {isGoodDeal ? `$${savings.toFixed(2)}` : `-$${Math.abs(savings).toFixed(2)}`}
                 </div>
                 {isGoodDeal && (
                   <div style={{
                     fontFamily: "'Space Mono',monospace", fontSize: ".55rem", letterSpacing: 2,
-                    background: "rgba(127,255,0,.12)", border: "1px solid rgba(127,255,0,.3)",
-                    color: "#7FFF00", padding: ".15rem .5rem", borderRadius: 3, marginTop: ".3rem",
+                    background: "rgba(76,155,82,.12)", border: "1px solid rgba(76,155,82,.3)",
+                    color: "#4c9b52", padding: ".15rem .5rem", borderRadius: 3, marginTop: ".3rem",
                     display: "inline-block",
                   }}>
                     {savingsPct}% OFF
@@ -482,12 +478,12 @@ export default function SnackCasino() {
               </div>
             </div>
             <div style={{ display: "flex", gap: "1rem", justifyContent: "center", marginTop: "1.5rem", flexWrap: "wrap" }}>
-              <a href="#" style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.2rem", letterSpacing: 3, padding: ".85rem 2.5rem", background: "#FF2E63", color: "white", border: "3px solid #FFD700", borderRadius: 6, textDecoration: "none", boxShadow: "6px 6px 0 #00D9FF", transition: "all .2s", display: "inline-block" }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translate(3px,3px)"; e.currentTarget.style.boxShadow = "3px 3px 0 #00D9FF"; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "6px 6px 0 #00D9FF"; }}
+              <a href="#" style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.2rem", letterSpacing: 3, padding: ".85rem 2.5rem", background: "#2f855a", color: "#f8fcf6", border: "2px solid #d3a84d", borderRadius: 6, textDecoration: "none", boxShadow: "4px 4px 0 #3f8f76", transition: "all .2s", display: "inline-block" }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translate(2px,2px)"; e.currentTarget.style.boxShadow = "2px 2px 0 #3f8f76"; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "4px 4px 0 #3f8f76"; }}
               >🛒 CLAIM THIS BOX</a>
-              <button onClick={reset} style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.2rem", letterSpacing: 3, padding: ".85rem 2rem", background: "transparent", color: "#00D9FF", border: "2px solid #00D9FF", borderRadius: 6, cursor: "pointer", transition: "all .2s" }}
-                onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,217,255,.1)"; }}
+              <button onClick={reset} style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.2rem", letterSpacing: 3, padding: ".85rem 2rem", background: "transparent", color: "#3f8f76", border: "2px solid #3f8f76", borderRadius: 6, cursor: "pointer", transition: "all .2s" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "rgba(63,143,118,.1)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
               >↺ SPIN AGAIN</button>
             </div>

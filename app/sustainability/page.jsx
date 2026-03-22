@@ -1,4 +1,5 @@
 'use client';
+import '@/styles/sustainability.css';
 import { useEffect } from 'react';
 import { SustainabilitySection } from './SustainabilitySection';
 import { Footer } from '../home/components/Footer';
