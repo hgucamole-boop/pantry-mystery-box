@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { snacks, rarity } from '@/data/products';
+import { snacks } from '@/data/products';
 
 const ScrollRow = ({ items, direction = 'right' }) => {
   const scrollContainerRef = useRef(null);
@@ -44,7 +44,6 @@ const ScrollRow = ({ items, direction = 'right' }) => {
   return (
     <div className="snacks-scroll-container" ref={scrollContainerRef}>
       {duplicatedItems.map((snack, idx) => {
-        const snackRarity = rarity[snack.rarity];
         return (
           <div key={`${snack.id}-${idx}`} className="snack-card-mini">
             <div className="snack-image-wrapper-mini">
@@ -65,23 +64,18 @@ export function SnacksSection() {
   // Filter snacks that are in stock
   const inStockSnacks = snacks.filter(snack => snack.multiple > 0);
 
-  // Split snacks into rows (alternating directions)
-  const row1 = inStockSnacks.slice(0, Math.ceil(inStockSnacks.length / 2));
-  const row2 = inStockSnacks.slice(Math.ceil(inStockSnacks.length / 2));
-
   return (
     <section className="snacks-section">
       <div className="snacks-header">
         <div>
           <p className="snacks-eyebrow">In Stock Now</p>
-          <h2 className="section-title" style={{marginBottom: "1rem"}}>Discover Our Collection</h2>
+          <h2 className="section-title snacks-title">Discover Our Collection</h2>
           <p className="snacks-subtitle">Explore our carefully curated selection of international snacks and hidden gems in stock this month. From common favorites to rare finds, there's something for everyone.</p>
         </div>
       </div>
 
       <div className="snacks-carousel">
-        <ScrollRow items={row1} direction="right" />
-        <ScrollRow items={row2} direction="left" />
+        <ScrollRow items={inStockSnacks} direction="right" />
       </div>
 
       <div className="snacks-footer">
