@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 2rem 5rem;
+  padding: 6rem 1rem 5rem;
   text-align: left;
   z-index: 1;
   width: 100%;
@@ -13,10 +13,10 @@
 }
 
 .hero-content {
-  width: min(1280px, 100%);
+  width: min(1400px, 100%);
   display: grid;
   grid-template-columns: minmax(320px, 1fr) minmax(340px, 0.95fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(3rem, 8vw, 8rem);
   align-items: center;
 }
 

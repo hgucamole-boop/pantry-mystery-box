@@ -25,8 +25,8 @@ export function Navbar() {
             🎰 Lucky Drop
           </Link>
           <Link
-            href="/gacha"
-            className={`nav-link ${pathname === '/gacha' ? 'active' : ''} !text-primary font-bold border border-primary !px-3 !py-1.5`}
+            href="/drop2"
+            className={`nav-link ${pathname === '/drop2' ? 'active' : ''} !text-primary font-bold border border-primary !px-3 !py-1.5`}
           >
             🎰 Lucky Drop 2
           </Link>

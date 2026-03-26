@@ -16,13 +16,13 @@ export function HeroSection() {
             CURIOSITY.
           </h1>
           <p className="hero-subtitle">
-            The monthly adventure for your tastebuds. Hand-picked, hard-to-find global snacks delivered to your door in a box of pure mystery.
+            The snack box that turns food waste into adventures. Curated from surplus, supply your pantries and events with treats and hidden gems from local markets. 
           </p>
           <div className="hero-actions">
             <a href="#pricing" className="cta-button">
               START YOUR JOURNEY
             </a>
-            <a href="#pricing" className="cta-button secondary">
+            <a href="/sustainability" className="cta-button secondary">
               HOW IT WORKS
             </a>
           </div>
@@ -43,8 +43,8 @@ export function HeroSection() {
           <div className="hero-floating-note">
             <div className="hero-note-icon">→</div>
             <div>
-              <p className="hero-note-title">Curated Worldwide</p>
-              <p className="hero-note-subtitle">Rare snacks from 20+ countries</p>
+              <p className="hero-note-title">Curated from surplus</p>
+              <p className="hero-note-subtitle">Snacks and finds from local markets</p>
             </div>
           </div>
         </div>
