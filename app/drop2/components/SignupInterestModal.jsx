@@ -17,25 +17,25 @@ export function SignupInterestModal({ isOpen, email, onEmailChange, onClose, onS
   if (!isOpen) return null;
 
   return (
-    <div className="drop2-modal-backdrop drop2-modal-backdrop-enter" onClick={onClose}>
+    <div className="gacha-modal-backdrop gacha-modal-backdrop-enter" onClick={onClose}>
       <div
-        className="drop2-modal drop2-modal-enter"
+        className="gacha-modal gacha-modal-enter"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="drop2-signup-title"
+        aria-labelledby="gacha-signup-title"
         onClick={(event) => event.stopPropagation()}
       >
         <button
           type="button"
-          className="drop2-modal-close"
+          className="gacha-modal-close"
           onClick={onClose}
           aria-label="Close sign up form"
         >
           ×
         </button>
-        <h4 id="drop2-signup-title">Register Your Interest</h4>
+        <h4 id="gacha-signup-title">Register Your Interest</h4>
         <p>Drop your email and we will keep you posted on upcoming snack box releases.</p>
-        <form className="drop2-modal-form" onSubmit={onSubmit}>
+        <form className="gacha-modal-form" onSubmit={onSubmit}>
           <input
             type="email"
             placeholder="you@example.com"
@@ -49,3 +49,5 @@ export function SignupInterestModal({ isOpen, email, onEmailChange, onClose, onS
     </div>
   );
 }
+
+
