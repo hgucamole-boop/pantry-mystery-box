@@ -1,5 +1,6 @@
 'use client';
 
+import { Coins, Gift, Sparkles, TrendingDown, TrendingUp } from 'lucide-react';
 import { calcValue } from '@/app/gacha/utils/gachaHelpers';
 
 export function GachaPullHistorySidebar({ pullHistory, selectedBoxName, unitMultiplier, boxPrice }) {
@@ -13,14 +14,40 @@ export function GachaPullHistorySidebar({ pullHistory, selectedBoxName, unitMult
   return (
     <div className="gacha-history-panel">
       <section className="gacha-history-roi" aria-label="Overall return on investment">
-        <p className="gacha-history-roi-label">Overall ROI</p>
-        <h4 className={isPositive ? 'positive' : 'negative'}>
-          {roiPct >= 0 ? '+' : ''}
-          {roiPct.toFixed(0)}%
-        </h4>
-        <div className="gacha-history-roi-meta">
-          <span>Spent: ${totalSpent.toFixed(2)}</span>
-          <span>Value: ${totalValue.toFixed(2)}</span>
+        <div className="gacha-history-roi-head">
+          <Sparkles className="gacha-history-roi-icon" />
+          <p className="gacha-history-roi-label">Overall Tracker</p>
+        </div>
+
+        <div className="gacha-history-roi-main">
+          <p className="gacha-history-roi-subtitle">{isPositive ? 'Profit' : 'Down'}</p>
+          <h4 className={isPositive ? 'positive' : 'negative'}>
+            {isPositive ? '+' : '-'}${Math.abs(profit).toFixed(2)}
+          </h4>
+          <div className="gacha-history-roi-rate">
+            {isPositive ? (
+              <TrendingUp className="gacha-history-roi-trend" />
+            ) : (
+              <TrendingDown className="gacha-history-roi-trend" />
+            )}
+            <span>
+              {roiPct >= 0 ? '+' : ''}
+              {roiPct.toFixed(0)}% ROI
+            </span>
+          </div>
+        </div>
+
+        <div className="gacha-history-roi-meta-grid">
+          <div className="gacha-history-roi-stat">
+            <Coins className="gacha-history-roi-stat-icon" />
+            <p>Spent</p>
+            <strong>${totalSpent.toFixed(2)}</strong>
+          </div>
+          <div className="gacha-history-roi-stat">
+            <Gift className="gacha-history-roi-stat-icon" />
+            <p>Value Won</p>
+            <strong>${totalValue.toFixed(2)}</strong>
+          </div>
         </div>
       </section>
 
