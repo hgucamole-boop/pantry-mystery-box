@@ -6,7 +6,7 @@ import {
   ROLL_WINDOW_H,
   RESULT_IDX,
   buildStrip,
-} from '@/app/drop2/utils/gachaHelpers';
+} from '@/app/gacha/utils/gachaHelpers';
 
 export function ReelColumn({ items, target, reelIdx, spinTrigger, onDone, isSpinning, isSettled }) {
   const stripRef = useRef(null);

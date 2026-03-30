@@ -1,7 +1,7 @@
 'use client';
 
-import { ReelColumn } from '@/app/drop2/components/ReelColumn';
-import { ROLL_COLUMNS } from '@/app/drop2/utils/gachaHelpers';
+import { ReelColumn } from '@/app/gacha/components/ReelColumn';
+import { ROLL_COLUMNS } from '@/app/gacha/utils/gachaHelpers';
 
 export function GachaPreviewEngine({
   columns,
@@ -14,8 +14,8 @@ export function GachaPreviewEngine({
 }) {
   return (
     <section className="gacha-engine">
-      <h2>Preview Generator</h2>
-      <p>Take a look at this month's selection of snacks. Box size changes the quantity per snack in your final box.</p>
+      {/* <h2>Preview Generator</h2>
+      <p>Take a look at this month's selection of snacks. Box size changes the quantity per snack in your final box.</p> */}
 
       <div className="gacha-rollers">
         {columns.map((col, colIdx) => (

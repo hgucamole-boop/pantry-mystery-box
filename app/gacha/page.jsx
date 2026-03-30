@@ -7,12 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { snacks as SNACKS } from '@/data/products';
 import { plans } from '@/data/constants';
 import { Navbar } from '@/app/components/Navbar';
-import { SignupInterestModal } from '@/app/drop2/components/SignupInterestModal';
-import { GachaHero } from '@/app/drop2/components/GachaHero';
-import { GachaPreviewEngine } from '@/app/drop2/components/GachaPreviewEngine';
-import { GachaResultsSection } from '@/app/drop2/components/GachaResultsSection';
-import { GachaSavingsSection } from '@/app/drop2/components/GachaSavingsSection';
-import { GachaSignupCta } from '@/app/drop2/components/GachaSignupCta';
+import { SignupInterestModal } from '@/app/gacha/components/SignupInterestModal';
+import { GachaHero } from '@/app/gacha/components/GachaHero';
+import { GachaPreviewEngine } from '@/app/gacha/components/GachaPreviewEngine';
+import { GachaResultsSection } from '@/app/gacha/components/GachaResultsSection';
+import { GachaSavingsSection } from '@/app/gacha/components/GachaSavingsSection';
+import { GachaSignupCta } from '@/app/gacha/components/GachaSignupCta';
 import {
   ROLL_COLUMNS,
   chunkSelection,
@@ -20,7 +20,7 @@ import {
   calcValue,
   parsePrice,
   buildColumns,
-} from '@/app/drop2/utils/gachaHelpers';
+} from '@/app/gacha/utils/gachaHelpers';
 
 export default function GachaPage() {
   const boxOptions = useMemo(
