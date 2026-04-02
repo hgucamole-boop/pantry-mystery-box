@@ -10,6 +10,8 @@ import EmojiFoodBeverageIcon from '@mui/icons-material/EmojiFoodBeverage';
 import CakeIcon from '@mui/icons-material/Cake';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
 
+import { categories } from '@/data/products';
+
 const iconMap = {
   cookie: CookieIcon,
   local_drink: LocalDrinkIcon,
@@ -29,12 +31,17 @@ const CategoryCard = ({
   sizeClass,
   bgColor,
   iconBgColor,
-  iconColor
+  iconColor,
+  onClick
 }) => {
   const CategoryIcon = iconMap[icon] || NewReleasesIcon;
 
   return (
-    <div className={`group relative block cursor-pointer ${bgColor} rounded-xl overflow-hidden transition-all hover:-translate-y-2 hover:shadow-xl ${sizeClass}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`group relative block w-full text-left cursor-pointer ${bgColor} rounded-xl overflow-hidden transition-all hover:-translate-y-2 hover:shadow-xl ${sizeClass}`}
+    >
       <img 
         alt={title} 
         className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-30 transition-opacity" 
@@ -62,135 +69,12 @@ const CategoryCard = ({
           </span>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
 export function SnacksSection() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  
-  const categories = [
-    {
-      id: 'snacks',
-      title: 'Snacks',
-      description: 'Artisanally crafted crunchy and savory delights for any time of day.',
-      icon: 'cookie',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDdr-zSme632yYz1Od8O4toM0Gx-OzUmGlaklCTgyRd1gRhm12-UbKoo-k89bURh64hAlEuGLsPmKM-7U7RDp5YB1i7tXV5L5LzR_8ZCMBVmbAnAJI3BYvTqPPub3qIbGlUeTNbwdZ8c3HTS_sw9i9hpum-3poGyn4QGD4dsXIT7OuWTZWd89Gru7s_2hVm_r7idTvkjyFWihWP-441p-re_Lf0hPCI6mdJAjmKN70rjqXZoINLuEnoX8JVXw1RuWk0rDC135I6FwKA',
-      buttonText: 'Shop Snacks',
-      sizeClass: 'bento-item-large',
-      bgColor: 'bg-surface-container',
-      iconBgColor: 'bg-secondary-fixed',
-      iconColor: 'text-on-secondary-fixed-variant',
-      sampleImages: [
-        'https://images.unsplash.com/photo-1599599810694-b5ac4dd1a2a3?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1599599810989-d1a4934e7c9a?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1583053757904-d3e6e6b5eaaa?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1559599810-46d1c41174ca?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1599599810667-8e2c6b78a2f4?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1599599811001-a3afc9e3f10d?w=300&h=300&fit=crop',
-      ],
-    },
-    {
-      id: 'drinks',
-      title: 'Drinks',
-      description: 'Refreshing botanical infusions and natural sparkling tonics.',
-      icon: 'local_drink',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKBGpZDdIvVyBtR5fPz8OX8ppdbak3gSf9UZa-QfN7Uv9LnepdNdBq_MII8cXiBHuYojOIrdvY0VwJcZFm0vJ_e5PwK5n7It5wFDc9LtDez3ztwkpa7hsaFXM_tO_snXYzEgu3o-bZ021ZV79Vi5hol-zD-dcE8Sn0BUavfp2lxwuK0Ll8IVcMx6nqlQ8LE9mtFZFO6-wMogcxlAM7WeMYcTD7sPKJhqf2pGRlVsZLJAuNOYCw-aD55vX6by8dxDYXEOKlsrn5NQ4K',
-      buttonText: 'Shop Drinks',
-      sizeClass: 'bento-item-tall',
-      bgColor: 'bg-surface-container-low',
-      iconBgColor: 'bg-primary-fixed',
-      iconColor: 'text-on-primary-fixed-variant',
-      sampleImages: [
-        'https://images.unsplash.com/photo-1556742212-5b321f3c261d?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1551632786-de41fde901c9?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1600788148184-403f7691d7d0?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1590741657129-826653500f72?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1587619002835-17d193fb7ecc?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1605519827010-7d1baed65e8c?w=300&h=300&fit=crop',
-      ],
-    },
-    {
-      id: 'coffee',
-      title: 'Coffee Pods',
-      description: null,
-      icon: 'coffee',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCOIw56Z-2iLlm-tfmkpiUqqT59bx5rIfJ426MspeVyM3EIz2C_zBkR5rQ24aoA6rcA06R4f-GnAIM_HyJa5nGfQUQT88YfjOqRD3HR1LLRzV9xeV8QVkZzqGKEzMG5BxWrUaWtriqwdtA6DeU2C540aSc_LjNMwZVx48Xv__ZoBZi6qGDQOA81yMIWG_hLxG39WIdBT9mTTBLzzQSztBJan41dqRjQ6WQyBNxr5nTrl-aplHcTjfYHJ8JOzYh-aVr94fLlhQ5xKiag',
-      buttonText: 'Shop Coffee',
-      sizeClass: '',
-      bgColor: 'bg-surface-container',
-      iconBgColor: 'bg-tertiary-fixed',
-      iconColor: 'text-on-tertiary-fixed-variant',
-      sampleImages: [
-        'https://images.unsplash.com/photo-1559056199-641a0ac8b3f7?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1447933601403-0c6688bcda7d?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1512568400610-62da47e1b7d0?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1609707236089-38ad01f28e04?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1491521271698-edde440a6230?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1442512595331-e89e6920582f?w=300&h=300&fit=crop',
-      ],
-    },
-    {
-      id: 'tea',
-      title: 'Tea Bags',
-      description: null,
-      icon: 'emoji_food_beverage',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDs1bygmYHxH9lhdeSHAh4KSKetKgQ4CFqeRedPdCIUf2Qdbpk7n1FGP_YJ454n1nKgNVUdQZqM9MTmEz6aUtqGjjHsBhmbyR0S9GB0JUgcUoh7ITGM_Jt72w49gwdyBEo8Kzr4XxFmw1NFcKZaVaDBWuX4ZxVBSGXTDv0wCyzgd-cnZcNgdJH4zWnOL9LEmIKoC_xqcUCAN0zFxNaqisHVeYNMuPoMI306I_xdQq2l6vEj1G_Wtgi1AfiCNXse4v6ad13g0cSF2LtJ',
-      buttonText: 'Shop Teas',
-      sizeClass: '',
-      bgColor: 'bg-surface-container-low',
-      iconBgColor: 'bg-secondary-fixed-dim',
-      iconColor: 'text-on-secondary-fixed-variant',
-      sampleImages: [
-        'https://images.unsplash.com/photo-1597318346121-4dd7ac277d1c?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1564876694728-f1d206a88370?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1597318235702-64f2dda46e3a?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1576092160562-40b08422138c?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1597318357657-53f38d932ab7?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1597318357685-6d9b7c5c1247?w=300&h=300&fit=crop',
-      ],
-    },
-    {
-      id: 'sweets',
-      title: 'Sweet Treats',
-      description: null,
-      icon: 'cake',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDm7XmXItOiBEsyQIe8SrmC8N_88Blw4eAdDju7AMfzVDYCkLsf40IfVZ38PqnofvMSzZzYBhJguWtMZPUmB51U6TZxOfpSXF3rr9xy4obWIf_mYQZE45eaXxC3pgrHuxp1tDQq0_7wXGQEucGBPCSBa92yBicZsfOWx2d9Z38xHPPu5xMlhtd1vuKTZUmlaieky9IaepBQeXNpifp7rjg2uo736rWKuuQ498nEQp4SgFiULs2b31NNe2J69MzC5cLE1_AnAe67R8dB',
-      buttonText: 'Shop Sweets',
-      sizeClass: '',
-      bgColor: 'bg-surface-container',
-      iconBgColor: 'bg-tertiary-fixed-dim',
-      iconColor: 'text-on-tertiary-fixed-variant',
-      sampleImages: [
-        'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1585518419759-8d36e6bbecc7?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1599599810694-b5ac4dd7d07a?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1599599811032-ad5f59fc0de9?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1599599810898-c9b3e3b7d9f9?w=300&h=300&fit=crop',
-      ],
-    },
-    {
-      id: 'new-arrivals',
-      title: 'New Arrivals',
-      description: 'The latest seasonal harvests and experimental small batches, direct from our partners.',
-      icon: 'new_releases',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCfjEKFeY-iEdcUZYCxm-0TPLsORZvU1avdvumwYZ66G76QDK2cKeEoBs9MTbl1Kg5tDZfeXbKKrCnKyTMg066p3T_JXIyo_Uwy7dU2_qeoE3q4IBdYOXbktECvh0RmbuETU9Ne1BsA21pPnO8DAV4oGTahY4LEWdkMisY1Z95K1QTbwL7mvlpml1E16ur7YBPrz8QAqf0id8lG3bOYDDvlt2F8SuwsNQKTSsar18wHmT-MJFc_Qc3e8BffxJ1BKSDwZMREpMEsiEUj',
-      buttonText: 'Explore Now',
-      sizeClass: 'bento-item-large',
-      bgColor: 'bg-primary-container',
-      iconBgColor: 'bg-surface-container-highest',
-      iconColor: 'text-primary text-3xl',
-      sampleImages: [
-        'https://images.unsplash.com/photo-1599599810694-b5ac4dd7d07a?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1556742212-5b321f3c261d?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1559056199-641a0ac8b3f7?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1597318235702-64f2dda46e3a?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1585518419759-8d36e6bbecc7?w=300&h=300&fit=crop',
-      ],
-    },
-  ];
 
   return (
     <section className="py-28 px-8 max-w-7xl mx-auto">
@@ -203,9 +87,82 @@ export function SnacksSection() {
           <CategoryCard
             key={category.id}
             {...category}
+            onClick={() => setSelectedCategory(category)}
           />
         ))}
       </div>
+
+      {selectedCategory && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedCategory.title} preview`}
+        >
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"
+            onClick={() => setSelectedCategory(null)}
+            aria-label="Close modal"
+          />
+
+          <div
+            className="relative w-full max-w-3xl rounded-2xl bg-surface-container-high p-6 md:p-8 shadow-2xl border border-outline-variant animate-[fadeIn_180ms_ease-out]"
+            style={{ backgroundColor: 'var(--surface-container-high, #f6f7f4)' }}
+          >
+            <button
+              type="button"
+              className="absolute top-4 right-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-highest transition-colors"
+              onClick={() => setSelectedCategory(null)}
+              aria-label="Close"
+            >
+              <CloseIcon sx={{ fontSize: '1.1rem' }} />
+            </button>
+
+            <div className="pr-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-tertiary mb-2">Category Preview</p>
+              <h3 className="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-3">{selectedCategory.title}</h3>
+              <p className="text-on-surface-variant leading-relaxed mb-6">
+                {selectedCategory.description || 'A handpicked mix from this category, curated for surprise value and premium quality in every mystery box.'}
+              </p>
+
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-8">
+                {selectedCategory.sampleImages?.slice(0, 6).map((sampleItem, index) => {
+                  const imageUrl = typeof sampleItem === 'string' ? sampleItem : sampleItem.image;
+                  const imageName = typeof sampleItem === 'string' ? null : sampleItem.name;
+                  
+                  return (
+                    <div
+                      key={`${selectedCategory.id}-sample-${index}`}
+                      className="relative group"
+                    >
+                      <img
+                        src={imageUrl}
+                        alt={imageName || `${selectedCategory.title} sample ${index + 1}`}
+                        className="h-16 w-full sm:h-20 rounded-lg object-contain border border-outline-variant cursor-pointer transition-transform group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      {imageName && (
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1.5 bg-surface-dim text-on-surface text-xs font-medium rounded-md whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 shadow-lg">
+                          {imageName}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              <Link
+                href="/gacha"
+                className="cta-button inline-block mt-4 px-8 py-3 text-center"
+                style={{ animation: 'none' }}
+              >
+                Start the Mystery Pull
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
