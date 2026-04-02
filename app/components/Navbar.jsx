@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { trackEvent } from '@/lib/gtm';
@@ -9,6 +9,11 @@ export function Navbar() {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +35,19 @@ export function Navbar() {
           <Link href="/" className="nav-logo">
             Mari Makan
           </Link>
-          <div className="nav-links">
+          <button
+            type="button"
+            className="nav-menu-toggle"
+            aria-expanded={isMenuOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span className="nav-menu-toggle-label">Menu</span>
+            <span className="nav-menu-toggle-icon" aria-hidden="true">
+              {isMenuOpen ? '×' : '☰'}
+            </span>
+          </button>
+          <div className={`nav-links ${isMenuOpen ? 'is-open' : ''}`} id="primary-navigation">
             <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>
               Home
             </Link>
@@ -43,7 +60,14 @@ export function Navbar() {
             <Link href="/gacha" className={`nav-link ${pathname === '/gacha' ? 'active' : ''}`}>
               🎰 Lucky Drop
             </Link>
-            <button type="button" className="nav-link nav-link-signup" onClick={() => setIsSignupOpen(true)}>
+            <button
+              type="button"
+              className="nav-link nav-link-signup"
+              onClick={() => {
+                setIsSignupOpen(true);
+                setIsMenuOpen(false);
+              }}
+            >
               Sign Up
             </button>
           </div>

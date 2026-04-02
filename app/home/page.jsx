@@ -2,7 +2,6 @@
 import '@/styles/home.css';
 import { useState, useEffect } from 'react';
 import { HeroSection } from '@/app/home/components/HeroSection';
-import { FeaturesSection } from '@/app/home/components/FeaturesSection';
 import { PricingSection } from '@/app/home/components/PricingSection';
 import { SignupSection } from '@/app/home/components/SignupSection';
 import { Footer } from '@/app/home/components/Footer';
