@@ -752,7 +752,7 @@
   height: 92px;
   display: grid;
   place-items: center;
-  background: #dbfbec;
+  background: transparent;
 }
 
 .gacha-card-media img {

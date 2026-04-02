@@ -51,21 +51,21 @@ export const sustainabilityPoints = [
     icon: '🛒',
     title: 'We Collect',
     desc: 'Partnering with supermarkets and suppliers to rescue quality food before it goes to waste. Every day, we save tons of perfectly good snacks from landfills.',
-    image: '/images/collect-placeholder.jpg',
+    image: '/images/snackRescue.jpg',
     alt: 'Team collecting surplus food from supermarket'
   },
   {
     icon: '📦',
     title: 'We Repackage',
     desc: 'Our expert team carefully curates and repackages each item into exciting mystery boxes. Quality control ensures every snack meets our standards.',
-    image: '/images/repackage-placeholder.jpg',
+    image: '/images/diverted.jpg',
     alt: 'Team repackaging snacks into mystery boxes'
   },
   {
     icon: '🚚',
     title: 'We Deliver',
     desc: 'Fresh boxes arrive at your office doorstep, turning surplus into surprise. Your team gets global treats while we fight food waste together.',
-    image: '/images/deliver-placeholder.jpg',
+    image: '/images/delivery.jpg',
     alt: 'Delivery team bringing boxes to office'
   }
 ];

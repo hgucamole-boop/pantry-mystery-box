@@ -10,6 +10,9 @@
   max-width: 800px;
   margin: 0 auto 4rem;
   text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 650ms ease, transform 650ms ease;
 }
 
 .sustainability-intro {
@@ -30,6 +33,10 @@
   gap: 4rem;
   align-items: center;
   margin-bottom: 6rem;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 680ms ease, transform 680ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
 .story-step:nth-child(even) {
@@ -42,6 +49,7 @@
 
 .story-content {
   padding: 2rem;
+  transition: transform 500ms ease;
 }
 
 .story-icon {
@@ -70,18 +78,21 @@
   border-radius: 12px;
   overflow: hidden;
   border: 3px solid var(--accent);
-  background: rgba(255, 255, 255, 0.8);
+  background: transparent;
   min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 500ms ease;
 }
 
 .placeholder-image {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  opacity: 0.3;
+  opacity: 1;
+  animation: imageFloat 5.8s ease-in-out infinite;
+  will-change: transform;
 }
 
 .image-placeholder-text {
@@ -102,14 +113,33 @@
   margin: 4rem auto 0;
   text-align: center;
   padding: 3rem 2rem;
-  background: rgba(255, 255, 255, 0.78);
-  border: 2px solid var(--accent);
+  background: linear-gradient(140deg, #086b43, #2f855a);
   border-radius: 12px;
+  box-shadow: 12px 12px 0 var(--secondary);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 650ms ease, transform 650ms ease;
+  color: white;
+}
+
+.sustainability-header.is-visible,
+.story-step.is-visible,
+.sustainability-impact.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-step.is-visible:hover .story-content {
+  transform: translateY(-4px);
+}
+
+.story-step.is-visible:hover .story-image {
+  transform: translateY(-6px);
 }
 
 .impact-text {
   font-size: 1.2rem;
-  color: var(--secondary);
+  color: white;
   font-weight: bold;
   letter-spacing: 1px;
   line-height: 1.6;
@@ -123,6 +153,32 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes imageFloat {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.01);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sustainability-header,
+  .story-step,
+  .sustainability-impact,
+  .story-content,
+  .story-image {
+    transition: none;
+  }
+
+  .placeholder-image {
+    animation: none;
   }
 }
 

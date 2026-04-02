@@ -1,10 +1,41 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
 import { sustainabilityPoints, sustainabilityStory } from '../../data/constants';
 
 export function SustainabilitySection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const root = sectionRef.current;
+    if (!root) return undefined;
+
+    const revealItems = root.querySelectorAll('.sustainability-header, .story-step, .sustainability-impact');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -8% 0px',
+      },
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="sustainability">
+    <section ref={sectionRef} className="sustainability">
       <div className="sustainability-header">
-        <h2 className="section-title">{sustainabilityStory.title}</h2>
+        <h2 className="section-title" style={{lineHeight: "5rem", marginBottom: "2rem"}}>{sustainabilityStory.title}</h2>
         <p className="sustainability-intro">
           {sustainabilityStory.subtitle}
         </p>
@@ -12,7 +43,7 @@ export function SustainabilitySection() {
 
       <div className="sustainability-story">
         {sustainabilityPoints.map((point, idx) => (
-          <div key={idx} className="story-step">
+          <div key={idx} className="story-step" style={{ '--reveal-delay': `${idx * 90}ms` }}>
             <div className="story-content">
               <span className="story-icon">{point.icon}</span>
               <h3 className="story-title">{point.title}</h3>
@@ -24,7 +55,6 @@ export function SustainabilitySection() {
                 alt={point.alt}
                 className="placeholder-image"
               />
-              <div className="image-placeholder-text">Image Placeholder</div>
             </div>
           </div>
         ))}
