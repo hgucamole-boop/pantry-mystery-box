@@ -75,21 +75,32 @@ export function GachaPullHistorySidebar({ pullHistory, selectedBoxName, unitMult
                   <span>{selectedBoxName}</span>
                 </div>
 
-                <div className="gacha-history-preview">
-                  {topItems.map((item) => (
-                    <div key={`${pull.id}-${item.id}`} className="gacha-history-snack">
-                      <img src={item.image} alt={item.name} />
-                      <p>{item.name}</p>
-                    </div>
-                  ))}
-                </div>
+                {(() => {
+                  const pullValue = calcValue(pull.selection, unitMultiplier);
+                  const savedValue = pullValue - boxPrice;
 
-                <div className="gacha-history-meta">
-                  <span>
-                    {pull.selection.length} picks x{unitMultiplier}
-                  </span>
-                  <span>${calcValue(pull.selection, unitMultiplier).toFixed(2)}</span>
-                </div>
+                  return (
+                    <>
+                      <div className="gacha-history-preview">
+                        {topItems.map((item) => (
+                          <div key={`${pull.id}-${item.id}`} className="gacha-history-snack">
+                            <img src={item.image} alt={item.name} />
+                            <p>{item.name}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="gacha-history-meta">
+                        <span>
+                          {pull.selection.length} picks x{unitMultiplier}
+                        </span>
+                        <span className={savedValue >= 0 ? 'positive' : 'negative'}>
+                          {savedValue >= 0 ? '+' : '-'}${Math.abs(savedValue).toFixed(2)} saved
+                        </span>
+                      </div>
+                    </>
+                  );
+                })()}
 
                 {hiddenCount > 0 && <p className="gacha-history-more">+{hiddenCount} more snacks in this month</p>}
               </article>
