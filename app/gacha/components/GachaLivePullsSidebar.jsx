@@ -54,12 +54,29 @@ export function GachaLivePullsSidebar({ snacks }) {
     const initial = Array.from({ length: 14 }, (_, idx) => buildFakePull(`seed-${idx}`, snacks));
     setLivePulls(initial);
 
-    const intervalMs = 2600;
-    const intervalId = setInterval(() => {
-      setLivePulls((prev) => [buildFakePull(`live-${Date.now()}`, snacks), ...prev].slice(0, 24));
-    }, intervalMs);
+    let timeoutId;
+    let isCancelled = false;
 
-    return () => clearInterval(intervalId);
+    const minDelayMs = 1200;
+    const maxDelayMs = 5200;
+
+    const scheduleNextPull = () => {
+      const nextDelay = Math.floor(Math.random() * (maxDelayMs - minDelayMs + 1)) + minDelayMs;
+
+      timeoutId = setTimeout(() => {
+        if (isCancelled) return;
+
+        setLivePulls((prev) => [buildFakePull(`live-${Date.now()}`, snacks), ...prev].slice(0, 24));
+        scheduleNextPull();
+      }, nextDelay);
+    };
+
+    scheduleNextPull();
+
+    return () => {
+      isCancelled = true;
+      clearTimeout(timeoutId);
+    };
   }, [snacks]);
 
   return (
@@ -69,10 +86,10 @@ export function GachaLivePullsSidebar({ snacks }) {
         <h3>Live Pulls</h3>
       </div>
 
-      <p className="gacha-sidebar-subtitle">Players are opening the same snack pool in real time.</p>
+      <p className="gacha-sidebar-subtitle">See what others are pulling in real time!</p>
 
       <div className="gacha-live-list" role="log" aria-live="polite" aria-label="Recent live pulls">
-        <AnimatePresence initial={false} mode="popLayout">
+        <AnimatePresence initial={false} mode="sync">
           {livePulls.map((pull) => (
             <motion.article
               key={pull.id}
@@ -81,7 +98,6 @@ export function GachaLivePullsSidebar({ snacks }) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -14, height: 0 }}
               transition={{ duration: 0.28, ease: 'easeOut' }}
-              layout
             >
               <div className={`gacha-live-thumb ${pull.rarityTone}`}>
                 <img src={pull.item.image} alt={pull.item.name} />
