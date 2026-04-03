@@ -14,6 +14,7 @@
 
 .hero-content {
   width: min(1200px, 100%);
+  margin: 0 2rem;
   display: grid;
   grid-template-columns: minmax(320px, 1fr) minmax(340px, 0.95fr);
   gap: clamp(3rem, 8vw, 8rem);
@@ -38,7 +39,7 @@
 
 .hero-title {
   font-family: 'Archivo Black', sans-serif;
-  font-size: clamp(2.2rem, 8vw, 6.2rem);
+  font-size: clamp(2.2rem, 7vw, 6.2rem);
   line-height: 0.88;
   margin-bottom: 1.4rem;
   background: linear-gradient(130deg, #194f35, #2f855a, #d3a84d);
