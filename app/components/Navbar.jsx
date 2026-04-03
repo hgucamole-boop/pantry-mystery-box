@@ -22,7 +22,7 @@ export function Navbar() {
     setIsSubmitting(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     alert(`Thanks for subscribing! We'll send confirmation to ${email}`);
-    trackEvent('button-click', { source: 'navbar-signup' });
+    trackEvent('navbar-signup-form-submission', { email });
     setEmail('');
     setIsSubmitting(false);
     setIsSignupOpen(false);
@@ -66,6 +66,7 @@ export function Navbar() {
               onClick={() => {
                 setIsSignupOpen(true);
                 setIsMenuOpen(false);
+                trackEvent("navbar-signup-button-click", {})
               }}
             >
               Sign Up

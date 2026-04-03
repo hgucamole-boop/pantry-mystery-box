@@ -16,7 +16,7 @@ export function SignupSection({ selectedPlan }) {
     setEmail('');
     setIsSubmitting(false);
 
-    trackEvent("button-click", {selectedPlan})
+    trackEvent("homepage-email-form-submission", {selectedPlan, email})
   };
 
   return (

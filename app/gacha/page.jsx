@@ -23,6 +23,7 @@ import {
   parsePrice,
   buildColumns,
 } from '@/app/gacha/utils/gachaHelpers';
+import { trackEvent } from '@/lib/gtm';
 
 export default function GachaPage() {
   const boxOptions = useMemo(
@@ -150,6 +151,7 @@ export default function GachaPage() {
     setIsSignupOpen(false);
     setSignupEmail('');
     toast.success('You have registered your interest in our service.');
+    trackEvent('gacha-signup-form-submission', { email: signupEmail, selectedPlan: selectedBoxId });
   };
 
   return (
