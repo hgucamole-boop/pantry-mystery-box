@@ -116,20 +116,44 @@ export function SnacksSection() {
             {selectedCategory.description || 'A handpicked mix from this category, curated for surprise value and premium quality in every mystery box.'}
           </p>
 
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-8">
+          <div className="grid grid-cols-2 gap-3 mb-8 sm:hidden">
+            {selectedCategory.sampleImages?.slice(0, 6).map((sampleItem, index) => {
+              const imageUrl = typeof sampleItem === 'string' ? sampleItem : sampleItem.image;
+              const imageName = typeof sampleItem === 'string' ? `${selectedCategory.title} sample ${index + 1}` : sampleItem.name;
+
+              return (
+                <div
+                  key={`${selectedCategory.id}-mobile-sample-${index}`}
+                  className="rounded-lg border border-outline-variant bg-surface-container p-2"
+                >
+                  <img
+                    src={imageUrl}
+                    alt={imageName}
+                    className="h-20 w-full rounded-md object-contain"
+                    loading="lazy"
+                  />
+                  <p className="mt-2 text-center text-[11px] font-semibold leading-tight text-on-surface-variant">
+                    {imageName}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="hidden sm:grid sm:grid-cols-6 gap-3 mb-8">
             {selectedCategory.sampleImages?.slice(0, 6).map((sampleItem, index) => {
               const imageUrl = typeof sampleItem === 'string' ? sampleItem : sampleItem.image;
               const imageName = typeof sampleItem === 'string' ? null : sampleItem.name;
 
               return (
                 <div
-                  key={`${selectedCategory.id}-sample-${index}`}
+                  key={`${selectedCategory.id}-desktop-sample-${index}`}
                   className="relative group"
                 >
                   <img
                     src={imageUrl}
                     alt={imageName || `${selectedCategory.title} sample ${index + 1}`}
-                    className="h-16 w-full sm:h-20 rounded-lg object-contain border border-outline-variant cursor-pointer transition-transform group-hover:scale-110"
+                    className="h-20 w-full rounded-lg object-contain border border-outline-variant cursor-pointer transition-transform group-hover:scale-110"
                     loading="lazy"
                   />
                   {imageName && (
@@ -145,7 +169,7 @@ export function SnacksSection() {
           <Link
             href="/gacha"
             className="cta-button inline-block mt-4 px-8 py-3 text-center"
-            style={{ animation: 'none' }}
+            style={{ animation: 'none', marginTop: "1rem" }}
           >
             Start the Mystery Pull
           </Link>
@@ -155,19 +179,21 @@ export function SnacksSection() {
   ) : null;
 
   return (
-    <section className="snacks-section py-20 px-8 max-w-7xl mx-auto">
-      <div className="mb-12">
-        <h2 className="pantry-title mb-4">The Pantry Collection</h2>
-        <div className="h-1 w-24 bg-tertiary rounded-full"></div>
-      </div>
-      <div className="bento-grid">
-        {categories.map((category) => (
-          <CategoryCard
-            key={category.id}
-            {...category}
-            onClick={() => setSelectedCategory(category)}
-          />
-        ))}
+    <section className="snacks-section">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="mb-12">
+          <h2 className="pantry-title mb-4">The Pantry Collection</h2>
+          <div className="h-1 w-24 bg-tertiary rounded-full"></div>
+        </div>
+        <div className="bento-grid">
+          {categories.map((category) => (
+            <CategoryCard
+              key={category.id}
+              {...category}
+              onClick={() => setSelectedCategory(category)}
+            />
+          ))}
+        </div>
       </div>
 
       {isMounted && selectedCategory ? createPortal(modalContent, document.body) : null}
