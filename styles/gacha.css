@@ -1245,6 +1245,12 @@
   }
 }
 
+@media (max-width: 1000px) {
+  .gacha-sidebar {
+    display: none;
+  }
+}
+
 @media (max-width: 1400px) {
   .gacha-layout {
     max-width: 1260px;
@@ -1252,16 +1258,65 @@
   }
 
   .gacha-sidebar {
-    display: none;
+    width: 200px;
+  }
+
+  .gacha-sidebar-left {
+    padding: 0 0.55rem 1rem 0.75rem;
+  }
+
+  .gacha-sidebar-right {
+    padding: 0 0.75rem 1rem 0.55rem;
   }
 
   .gacha-main {
     max-width: 1180px;
     margin: 0 auto;
   }
+
+  .gacha-card {
+    grid-template-columns: 76px minmax(0, 1fr);
+  }
+
+  .gacha-card-media {
+    width: 76px;
+    height: 76px;
+  }
+
+  .gacha-card-media img {
+    width: 56px;
+    height: 56px;
+  }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1001px) and (max-width: 1300px) {
+  .gacha-live-item {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    grid-template-areas:
+      'thumb text'
+      'thumb value';
+    align-items: start;
+    row-gap: 0.22rem;
+    column-gap: 0.5rem;
+  }
+
+  .gacha-live-thumb {
+    grid-area: thumb;
+  }
+
+  .gacha-live-text {
+    grid-area: text;
+  }
+
+  .gacha-live-item strong {
+    grid-area: value;
+    justify-self: start;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 1000px) {
   .gacha-mobile-history-strip {
     display: flex;
   }
