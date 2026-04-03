@@ -23,7 +23,7 @@ export function SignupSection({ selectedPlan }) {
     <section id="signup" className="signup-section">
       <h2 className="section-title" style={{marginBottom: "1.5rem"}}>Get Started Today</h2>
       <p className="hero-subtitle">
-        Join the snack adventure. Your first mystery box ships within 48 hours.
+        Join the snack adventure. Sign up with your email to receive updates on our launch, exclusive offers, and more. Don't miss out on the fun!
       </p>
       <form className="signup-form" onSubmit={handleSubmit}>
         <input

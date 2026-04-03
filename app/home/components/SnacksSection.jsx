@@ -58,12 +58,12 @@ const CategoryCard = ({
           <div className={`w-10 h-10 ${iconBgColor} bg-[#2f855a] rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
             <CategoryIcon className={`${iconColor} text-white`} sx={{ fontSize: '1.05rem' }} />
           </div>
-          <h3 className={`font-headline text-2xl font-bold mb-2 ${id === 'new-arrivals' ? 'text-white' : ''}`}>{title}</h3>
+          <h3 className={`font-headline text-xl leading-tight font-bold mb-2 ${id === 'new-arrivals' ? 'text-white' : ''}`}>{title}</h3>
           {description && (
-            <p className={`hidden md:block max-w-sm mb-4 leading-relaxed ${id === 'new-arrivals' ? 'text-white' : 'text-on-surface-variant'}`}>{description}</p>
+            <p className={`hidden md:block max-w-sm mb-3 text-sm leading-snug ${id === 'new-arrivals' ? 'text-white' : 'text-on-surface-variant'}`}>{description}</p>
           )}
           <span
-            className={`mt-auto inline-flex items-center font-bold group-hover:gap-4 transition-all ${id === 'new-arrivals' ? 'text-white' : 'text-secondary'}`}
+            className={`mt-auto inline-flex items-center text-sm leading-tight font-bold group-hover:gap-4 transition-all ${id === 'new-arrivals' ? 'text-white' : 'text-secondary'}`}
           >
             {buttonText}
             <ArrowForwardIcon className="ml-2" sx={{ fontSize: '1rem' }} />
@@ -180,7 +180,7 @@ export function SnacksSection() {
 
   return (
     <section className="snacks-section">
-      <div className="mx-auto w-full max-w-7xl">
+      <div className="home-section-gutter mx-auto w-full max-w-7xl">
         <div className="mb-12">
           <h2 className="pantry-title mb-4">The Pantry Collection</h2>
           <div className="h-1 w-24 bg-tertiary rounded-full"></div>
