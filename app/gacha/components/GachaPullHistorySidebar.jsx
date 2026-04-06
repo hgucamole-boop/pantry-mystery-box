@@ -3,7 +3,13 @@
 import { Coins, Gift, Sparkles, TrendingDown, TrendingUp } from 'lucide-react';
 import { calcValue } from '@/app/gacha/utils/gachaHelpers';
 
-export function GachaPullHistorySidebar({ pullHistory, selectedBoxName, unitMultiplier, boxPrice }) {
+export function GachaPullHistorySidebar({
+  pullHistory,
+  selectedBoxName,
+  unitMultiplier,
+  boxPrice,
+  onPullSelect,
+}) {
   const historyCount = pullHistory.length;
   const totalSpent = pullHistory.reduce((sum, pull) => sum + (pull.boxPrice ?? boxPrice), 0);
   const totalValue = pullHistory.reduce(
@@ -72,7 +78,19 @@ export function GachaPullHistorySidebar({ pullHistory, selectedBoxName, unitMult
             const hiddenCount = Math.max(0, pull.selection.length - topItems.length);
 
             return (
-              <article key={pull.id} className="gacha-history-item">
+              <article
+                key={pull.id}
+                className="gacha-history-item gacha-history-item-clickable"
+                role="button"
+                tabIndex={0}
+                onClick={() => onPullSelect?.(pull)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    onPullSelect?.(pull);
+                  }
+                }}
+              >
                 <div className="gacha-history-item-head">
                   <strong>{pull.monthLabel}</strong>
                   <span>{pull.boxName || selectedBoxName}</span>
@@ -97,7 +115,7 @@ export function GachaPullHistorySidebar({ pullHistory, selectedBoxName, unitMult
 
                       <div className="gacha-history-meta">
                         <span>
-                          {pull.selection.length} picks x{pullMultiplier}
+                          {pull.selection.length} picks
                         </span>
                         <span className={savedValue >= 0 ? 'positive' : 'negative'}>
                           {savedValue >= 0 ? '+' : '-'}${Math.abs(savedValue).toFixed(2)} saved

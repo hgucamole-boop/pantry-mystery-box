@@ -14,6 +14,7 @@ import { GachaResultsSection } from '@/app/gacha/components/GachaResultsSection'
 import { GachaSavingsSection } from '@/app/gacha/components/GachaSavingsSection';
 import { GachaSignupCta } from '@/app/gacha/components/GachaSignupCta';
 import { GachaPullHistorySidebar } from '@/app/gacha/components/GachaPullHistorySidebar';
+import { GachaPullDetailsModal } from '@/app/gacha/components/GachaPullDetailsModal';
 import { GachaLivePullsSidebar } from '@/app/gacha/components/GachaLivePullsSidebar';
 import {
   ROLL_COLUMNS,
@@ -53,6 +54,7 @@ export default function GachaPage() {
   const [spinTrigger, setSpinTrigger] = useState(0);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [isHistorySheetOpen, setIsHistorySheetOpen] = useState(false);
+  const [activeHistoryPull, setActiveHistoryPull] = useState(null);
   const [signupEmail, setSignupEmail] = useState('');
   const [pullHistory, setPullHistory] = useState([]);
   const lastLoggedSpinRef = useRef(0);
@@ -181,6 +183,7 @@ export default function GachaPage() {
             selectedBoxName={selectedBox?.name || 'Snack Box'}
             unitMultiplier={unitMultiplier}
             boxPrice={boxPrice}
+            onPullSelect={setActiveHistoryPull}
           />
         </aside>
 
@@ -286,11 +289,23 @@ export default function GachaPage() {
                 selectedBoxName={selectedBox?.name || 'Snack Box'}
                 unitMultiplier={unitMultiplier}
                 boxPrice={boxPrice}
+                onPullSelect={(pull) => {
+                  setActiveHistoryPull(pull);
+                  setIsHistorySheetOpen(false);
+                }}
               />
             </div>
           </div>
         </div>
       )}
+
+      <GachaPullDetailsModal
+        pull={activeHistoryPull}
+        selectedBoxName={selectedBox?.name || 'Snack Box'}
+        unitMultiplier={unitMultiplier}
+        boxPrice={boxPrice}
+        onClose={() => setActiveHistoryPull(null)}
+      />
     </div>
   );
 }
