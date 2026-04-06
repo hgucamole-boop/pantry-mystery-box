@@ -46,7 +46,7 @@ function AnimatedNumber({ end, suffix = '', prefix = '', duration = 2000 }) {
 const counters = [
   { label: 'Snacks Saved', end: 48520, suffix: '+', color: 'pink', photoLabel: 'Snack rescue photo', image: images.sustainability.snackRescue },
   { label: 'Boxes Delivered', end: 6230, suffix: '+', color: 'cyan', photoLabel: 'Delivery photo', image: images.sustainability.delivery },
-  { label: 'Tonnes Diverted', end: 14, suffix: '.7t', color: 'gold', photoLabel: 'Impact photo', image: images.sustainability.diverted },
+  { label: 'kg of CO2 diverted', end: 32100, suffix: '+', color: 'gold', photoLabel: 'Carbon impact photo', image: images.sustainability.diverted },
 ];
 
 export function ImpactCounter() {
