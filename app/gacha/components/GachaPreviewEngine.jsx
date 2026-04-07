@@ -34,10 +34,7 @@ export function GachaPreviewEngine({
 
       <div className="gacha-engine-actions">
         <button className="gacha-primary-btn" onClick={onGenerate} disabled={isSpinning}>
-          {isSpinning ? 'Generating...' : 'Generate My Selection'}
-        </button>
-        <button className="gacha-secondary-btn" onClick={onGenerate} disabled={isSpinning}>
-          {isSpinning ? `Settling ${settledCount}/${ROLL_COLUMNS}` : 'Preview Another Box'}
+          {isSpinning ? `Generating ${settledCount}/${ROLL_COLUMNS}` : 'Generate My Selection'}
         </button>
       </div>
     </section>

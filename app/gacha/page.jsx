@@ -304,7 +304,13 @@ export default function GachaPage() {
         selectedBoxName={selectedBox?.name || 'Snack Box'}
         unitMultiplier={unitMultiplier}
         boxPrice={boxPrice}
-        onClose={() => setActiveHistoryPull(null)}
+        onClose={() => {
+          setActiveHistoryPull(null);
+
+          if (typeof window !== 'undefined' && window.matchMedia('(max-width: 1000px)').matches) {
+            setIsHistorySheetOpen(true);
+          }
+        }}
       />
     </div>
   );

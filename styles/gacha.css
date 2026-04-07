@@ -1244,7 +1244,7 @@
 
 .gacha-history-modal-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.7rem;
   margin: 1.1rem 0 1rem;
 }
@@ -1282,8 +1282,105 @@
   padding-right: 0.15rem;
 }
 
+.gacha-history-modal-item-wrap {
+  min-width: 0;
+}
+
 .gacha-history-modal-card {
   grid-template-columns: 80px minmax(0, 1fr);
+}
+
+.gacha-history-modal-card-desktop {
+  display: grid;
+}
+
+.gacha-history-modal-card-mobile {
+  display: none;
+  border: 1px solid rgba(6, 67, 43, 0.24);
+  border-radius: 0.8rem;
+  background: #ffffff;
+  box-shadow: 0 7px 16px rgba(3, 32, 23, 0.09);
+  padding: 0.52rem;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.gacha-history-modal-card-mobile-media {
+  width: 64px;
+  height: 64px;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(6, 67, 43, 0.14);
+  background: rgba(244, 251, 247, 0.88);
+  display: grid;
+  place-items: center;
+}
+
+.gacha-history-modal-card-mobile-media img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.gacha-history-modal-card-mobile-content {
+  min-width: 0;
+}
+
+.gacha-history-modal-card-mobile-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+.gacha-history-modal-card-mobile-head h3 {
+  margin: 0;
+  min-width: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.98rem;
+  color: #0a5e3c;
+  letter-spacing: 0.6px;
+  line-height: 1;
+}
+
+.gacha-history-modal-card-mobile-head .gacha-rarity-badge {
+  margin-bottom: 0;
+}
+
+.gacha-history-modal-card-mobile-stats {
+  margin-top: 0.38rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.gacha-history-modal-card-mobile-stats div {
+  border: 1px solid rgba(6, 67, 43, 0.13);
+  border-radius: 0.55rem;
+  padding: 0.35rem 0.4rem;
+  background: rgba(244, 251, 247, 0.88);
+}
+
+.gacha-history-modal-card-mobile-stats span {
+  display: block;
+  margin-bottom: 0.1rem;
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: rgba(3, 32, 23, 0.58);
+}
+
+.gacha-history-modal-card-mobile-stats strong {
+  display: block;
+  min-width: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.6px;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: #0a5e3c;
 }
 
 .gacha-history-modal-card .gacha-card-media {
@@ -1443,6 +1540,92 @@
 }
 
 @media (max-width: 700px) {
+  .gacha-modal-backdrop {
+    place-items: end center;
+    padding: 0.5rem 0.5rem 0;
+  }
+
+  .gacha-modal {
+    width: 100%;
+    max-height: 80dvh;
+    border-radius: 1rem 1rem 0 0;
+    padding: 1rem;
+  }
+
+  .gacha-modal-close {
+    top: 0.55rem;
+    right: 0.55rem;
+    width: 42px;
+    height: 42px;
+  }
+
+  .gacha-history-modal {
+    max-height: 80dvh;
+  }
+
+  .gacha-history-modal-head {
+    padding-right: 2.8rem;
+  }
+
+  .gacha-history-modal h4 {
+    font-size: clamp(1.45rem, 7vw, 1.9rem);
+    line-height: 1.04;
+  }
+
+  .gacha-history-modal-summary {
+    margin: 0.75rem 0;
+    gap: 0.55rem;
+  }
+
+  .gacha-history-modal-summary div {
+    padding: 0.65rem 0.7rem;
+  }
+
+  .gacha-history-modal-summary strong {
+    font-size: 1.05rem;
+  }
+
+  .gacha-history-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    padding-right: 0;
+    padding-bottom: 0.35rem;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .gacha-history-modal-card {
+    grid-template-columns: 74px minmax(0, 1fr);
+  }
+
+  .gacha-history-modal-card-desktop {
+    display: none;
+  }
+
+  .gacha-history-modal-card-mobile {
+    display: grid;
+  }
+
+  .gacha-history-modal-card .gacha-card-media {
+    width: 74px;
+    height: 74px;
+  }
+
+  .gacha-history-modal-card .gacha-card-media img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .gacha-history-modal-card .gacha-card-body h3 {
+    font-size: 0.95rem;
+  }
+
+  .gacha-history-modal-card .gacha-card-meta {
+    font-size: 0.76rem;
+  }
+
   .gacha-main {
     padding: 1.5rem 1rem 3rem;
   }

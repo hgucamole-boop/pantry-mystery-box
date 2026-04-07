@@ -60,25 +60,56 @@ export function GachaPullDetailsModal({ pull, selectedBoxName, unitMultiplier, b
         </div>
 
         <div className="gacha-history-modal-grid">
-          {pull.selection.map((item) => (
-            <article key={`${pull.id}-${item.id}`} className="gacha-card gacha-history-modal-card">
-              <div className="gacha-card-media">
-                <img src={item.image} alt={item.name} />
-              </div>
-              <div className="gacha-card-body">
-                <div className="gacha-card-header">
-                  <span className={`gacha-rarity-badge ${item.rarity.toLowerCase()}`}>
-                    {item.rarity.toLowerCase()}
-                  </span>
-                  <h3>{item.name}</h3>
+          {pull.selection.map((item) => {
+            const totalUnits = item.multiple * pullMultiplier;
+            const itemTotalValue = item.numericValue * totalUnits;
+
+            return (
+              <article key={`${pull.id}-${item.id}`} className="gacha-history-modal-item-wrap">
+                <div className="gacha-card gacha-history-modal-card gacha-history-modal-card-desktop">
+                  <div className="gacha-card-media">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <div className="gacha-card-body">
+                    <div className="gacha-card-header">
+                      <span className={`gacha-rarity-badge ${item.rarity.toLowerCase()}`}>
+                        {item.rarity.toLowerCase()}
+                      </span>
+                      <h3>{item.name}</h3>
+                    </div>
+                    <div className="gacha-card-meta">
+                      <span>{totalUnits} units</span>
+                      <strong>${itemTotalValue.toFixed(2)}</strong>
+                    </div>
+                  </div>
                 </div>
-                <div className="gacha-card-meta">
-                  <span>{item.multiple * pullMultiplier} units</span>
-                  <strong>${(item.numericValue * item.multiple * pullMultiplier).toFixed(2)}</strong>
+
+                <div className="gacha-history-modal-card-mobile">
+                  <div className="gacha-history-modal-card-mobile-media">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <div className="gacha-history-modal-card-mobile-content">
+                    <div className="gacha-history-modal-card-mobile-head">
+                      <h3>{item.name}</h3>
+                      <span className={`gacha-rarity-badge ${item.rarity.toLowerCase()}`}>
+                        {item.rarity.toLowerCase()}
+                      </span>
+                    </div>
+                    <div className="gacha-history-modal-card-mobile-stats">
+                      <div>
+                        <span>Units</span>
+                        <strong>{totalUnits}</strong>
+                      </div>
+                      <div>
+                        <span>Value</span>
+                        <strong>${itemTotalValue.toFixed(2)}</strong>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </div>
