@@ -1530,6 +1530,10 @@
     display: flex;
   }
 
+  .gacha-mobile-history-sheet {
+    display: block;
+  }
+
   .gacha-rollers {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1663,10 +1667,6 @@
 
   .gacha-mobile-history-strip {
     margin-top: 0.4rem;
-  }
-
-  .gacha-mobile-history-sheet {
-    display: block;
   }
 
   .gacha-engine {
