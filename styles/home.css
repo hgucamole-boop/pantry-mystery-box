@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  min-height: calc(100vh - 6rem);
+  /* min-height: calc(100vh - 6rem); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,7 +8,6 @@
   text-align: left;
   z-index: 1;
   width: 100%;
-  overflow: hidden;
   background: linear-gradient(180deg, #f4fbf1 0%, #e8f7ee 100%);
 }
 
@@ -39,7 +38,7 @@
 
 .hero-title {
   font-family: 'Archivo Black', sans-serif;
-  font-size: clamp(2.2rem, 7vw, 6.2rem);
+  font-size: clamp(2.2rem, 6vw, 6.2rem);
   line-height: 0.88;
   max-width: 100%;
   margin-bottom: 1.4rem;
@@ -264,9 +263,45 @@
   letter-spacing: 2px;
 }
 
-@media (min-width: 901px) {
+@media (max-width: 1400px) {
   .hero {
-    height: calc(100vh - 6rem);
+    min-height: calc(100vh - 6rem);
+    padding: 0rem 0rem 4rem 0rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 6.5vw, 7.2rem);
+  }
+
+  .hero-content {
+    margin: 0 3rem;
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(340px, 0.95fr);
+    gap: clamp(2rem, 1vw, 8rem);
+    align-items: center;
+    height: 100%;
+  }
+
+  .hero-subtitle {
+    margin: 0 auto 1rem;
+    font-size: 0.9rem
+  }
+
+  .hero-cta {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1.15rem 2.2rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-photo-frame {
+    width: min(380px, 100%);
+  }
+
+  .hero-floating-badge {
+    position: absolute;
+    right: 0px;
+    top: -26px;
   }
 }
 

@@ -16,7 +16,7 @@ export const snacks = [
   { id: 6,  name: "Ginger Shot",                 category: "drink", image: "/snacks/drinks/ginger-shot.webp",                      country: "🇯🇵", rarity: "common",    value: "S$2.90",  numericValue: 2.90, multiple: 10 },
   { id: 7,  name: "Pokka Green Tea",             category: "drink", image: "/snacks/drinks/pokka-green-tea.png",                   country: "🇸🇬", rarity: "common",    value: "S$2.40",  numericValue: 2.40, multiple: 10 },
   { id: 8,  name: "Yogurt Drink",                category: "drink", image: "/snacks/drinks/yogurt-drink.png",                      country: "🇯🇵", rarity: "common",    value: "S$2.80",  numericValue: 2.80, multiple: 10 },
-  { id: 9,  name: "Mango Juice",                 category: "drink", image: "/snacks/drinks/mango-juice.jpg",                       country: "🇹🇭", rarity: "common",    value: "S$3.20",  numericValue: 3.20, multiple: 7.5 },
+  { id: 9,  name: "Mango Juice",                 category: "drink", image: "/snacks/drinks/mango-juice.jpg",                       country: "🇹🇭", rarity: "common",    value: "S$3.20",  numericValue: 3.20, multiple: 7 },
   { id: 10, name: "Pokka Coffee",                category: "drink", image: "/snacks/drinks/pokka-coffee.png",                      country: "🇸🇬", rarity: "common",    value: "S$2.70",  numericValue: 2.70, multiple: 15 },
   // RARE
   { id: 11, name: "Crispy M&M's",                category: "sweet",      image: "/snacks/sweets/crispy-mms.jpg",                      country: "🇺🇸", rarity: "common",    value: "S$4.50",  numericValue: 4.50, multiple: 7 },

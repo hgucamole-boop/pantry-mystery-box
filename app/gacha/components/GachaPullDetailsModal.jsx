@@ -51,11 +51,11 @@ export function GachaPullDetailsModal({ pull, selectedBoxName, unitMultiplier, b
         <div className="gacha-history-modal-summary">
           <div>
             <span>Original Value</span>
-            <strong>${pullValue.toFixed(2)}</strong>
+            <strong>S${pullValue.toFixed(2)}</strong>
           </div>
           <div>
             <span>Saved</span>
-            <strong>{savedValue >= 0 ? '+' : '-'}${Math.abs(savedValue).toFixed(2)}</strong>
+            <strong>{savedValue >= 0 ? '+' : '-'}S${Math.abs(savedValue).toFixed(2)}</strong>
           </div>
         </div>
 
@@ -79,7 +79,7 @@ export function GachaPullDetailsModal({ pull, selectedBoxName, unitMultiplier, b
                     </div>
                     <div className="gacha-card-meta">
                       <span>{totalUnits} units</span>
-                      <strong>${itemTotalValue.toFixed(2)}</strong>
+                      <strong>S${itemTotalValue.toFixed(2)}</strong>
                     </div>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ export function GachaPullDetailsModal({ pull, selectedBoxName, unitMultiplier, b
                       </div>
                       <div>
                         <span>Value</span>
-                        <strong>${itemTotalValue.toFixed(2)}</strong>
+                        <strong>S${itemTotalValue.toFixed(2)}</strong>
                       </div>
                     </div>
                   </div>

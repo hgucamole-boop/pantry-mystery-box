@@ -36,6 +36,7 @@ export default function GachaPage() {
       popular: plan.popular,
       price: plan.price,
       unitMultiplier: plan.unitMultiplier || 1,
+      caption: plan.caption || '',
     })),
     [],
   );

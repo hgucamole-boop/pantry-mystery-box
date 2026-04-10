@@ -29,7 +29,7 @@ export function GachaResultsSection({
             >
               <span className="gacha-size-emoji">{box.emoji}</span>
               <span className="gacha-size-name">{box.name}</span>
-              <span className="gacha-size-pax">{box.pax}</span>
+              <span className="gacha-size-pax">{box.caption}</span>
             </button>
           ))}
         </div>

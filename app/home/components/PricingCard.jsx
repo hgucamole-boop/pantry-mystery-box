@@ -11,7 +11,6 @@ export function PricingCard({ plan, isSelected, onSelect }) {
         <div className="plan-price">{plan.price}</div>
         <span className="plan-period">/ month</span>
       </div>
-      <div className="plan-per-head">✦ {plan.perHead}</div>
       <hr className="plan-divider" />
       <p className="plan-desc">{plan.description}</p>
       <button
