@@ -66,7 +66,7 @@ export function GachaResultsSection({
                 </div>
                 <div className="gacha-card-meta">
                   <span>{item.multiple * unitMultiplier} units</span>
-                  <strong>${(item.numericValue * item.multiple * unitMultiplier).toFixed(2)}</strong>
+                  <strong>S${(item.numericValue * item.multiple * unitMultiplier).toFixed(2)}</strong>
                 </div>
               </div>
             </article>

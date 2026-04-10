@@ -14,15 +14,15 @@ export function GachaSavingsSection({ hasPulls, totalValue, boxPrice, savings, s
     <section className="gacha-savings">
       <div>
         <p>Total Box Value</p>
-        <h4>${totalValue.toFixed(2)}</h4>
+        <h4>S${totalValue.toFixed(2)}</h4>
       </div>
       <div>
         <p>You Pay</p>
-        <h4>${boxPrice.toFixed(2)}</h4>
+        <h4>S${boxPrice.toFixed(2)}</h4>
       </div>
       <div>
         <p>You Save</p>
-        <h4>{savings > 0 ? `${savingsPct}% OFF` : '$0.00'}</h4>
+        <h4>{savings > 0 ? `${savingsPct}% OFF` : 'S$0.00'}</h4>
       </div>
     </section>
   );

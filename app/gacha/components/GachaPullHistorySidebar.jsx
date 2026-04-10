@@ -31,7 +31,7 @@ export function GachaPullHistorySidebar({
         <div className="gacha-history-roi-main">
           <p className="gacha-history-roi-subtitle">{isPositive ? 'Profit' : 'Down'}</p>
           <h4 className={isPositive ? 'positive' : 'negative'}>
-            {isPositive ? '+' : '-'}${Math.abs(profit).toFixed(2)}
+            {isPositive ? '+' : '-'}S${Math.abs(profit).toFixed(2)}
           </h4>
           <div className="gacha-history-roi-rate">
             {isPositive ? (
@@ -50,12 +50,12 @@ export function GachaPullHistorySidebar({
           <div className="gacha-history-roi-stat">
             <Coins className="gacha-history-roi-stat-icon" />
             <p>Spent</p>
-            <strong>${totalSpent.toFixed(2)}</strong>
+            <strong>S${totalSpent.toFixed(2)}</strong>
           </div>
           <div className="gacha-history-roi-stat">
             <Gift className="gacha-history-roi-stat-icon" />
             <p>Value Won</p>
-            <strong>${totalValue.toFixed(2)}</strong>
+            <strong>S${totalValue.toFixed(2)}</strong>
           </div>
         </div>
       </section>
@@ -118,7 +118,7 @@ export function GachaPullHistorySidebar({
                           {pull.selection.length} picks
                         </span>
                         <span className={savedValue >= 0 ? 'positive' : 'negative'}>
-                          {savedValue >= 0 ? '+' : '-'}${Math.abs(savedValue).toFixed(2)} saved
+                          {savedValue >= 0 ? '+' : '-'}S${Math.abs(savedValue).toFixed(2)} saved
                         </span>
                       </div>
                     </>
