@@ -1785,7 +1785,7 @@
   }
 
   .gacha-rollers {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .gacha-results {
@@ -1803,7 +1803,8 @@
 
 @media (min-width: 1001px) {
   .gacha-hero-preview-section {
-    height: calc(100vh - 88px - 2rem);
+    height: calc(100vh - 88px);
+    max-height: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1863,7 +1864,7 @@
   }
 }
 
-@media (max-height: 620px) {
+@media (max-height: 680px) {
   .gacha-chips {
     display: none;
   }
