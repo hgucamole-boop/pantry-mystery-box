@@ -63,26 +63,31 @@ export function GachaResultsSection({
           ))}
 
         {hasPulls &&
-          selection.map((item, idx) => (
-            <article key={`gacha-result-${item.id}-${idx}`} className="gacha-card">
-              <div className="gacha-card-media">
-                <img src={item.image} alt={item.name} />
-              </div>
-              <div className="gacha-card-body">
-                <div className="gacha-card-header">
-                  <span className={`gacha-rarity-badge ${item.rarity.toLowerCase()}`}>
-                    {item.rarity.toLowerCase()}
-                  </span>
-                  <h3>{item.name}</h3>
-                  <small className="gacha-category-text">{formatCategory(item.category)}</small>
+          selection.map((item, idx) => {
+            const totalUnits = Math.round(item.multiple * unitMultiplier);
+            const itemTotalValue = item.numericValue * totalUnits;
+
+            return (
+              <article key={`gacha-result-${item.id}-${idx}`} className="gacha-card">
+                <div className="gacha-card-media">
+                  <img src={item.image} alt={item.name} />
                 </div>
-                <div className="gacha-card-meta">
-                  <span>{item.multiple * unitMultiplier} units</span>
-                  <strong>S${(item.numericValue * item.multiple * unitMultiplier).toFixed(2)}</strong>
+                <div className="gacha-card-body">
+                  <div className="gacha-card-header">
+                    <span className={`gacha-rarity-badge ${item.rarity.toLowerCase()}`}>
+                      {item.rarity.toLowerCase()}
+                    </span>
+                    <h3>{item.name}</h3>
+                    <small className="gacha-category-text">{formatCategory(item.category)}</small>
+                  </div>
+                  <div className="gacha-card-meta">
+                    <span>{totalUnits} units</span>
+                    <strong>S${itemTotalValue.toFixed(2)}</strong>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
       </div>
     </section>
   );

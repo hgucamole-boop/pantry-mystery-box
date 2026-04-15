@@ -61,7 +61,7 @@ export function GachaPullDetailsModal({ pull, selectedBoxName, unitMultiplier, b
 
         <div className="gacha-history-modal-grid">
           {pull.selection.map((item) => {
-            const totalUnits = item.multiple * pullMultiplier;
+            const totalUnits = Math.round(item.multiple * pullMultiplier);
             const itemTotalValue = item.numericValue * totalUnits;
 
             return (

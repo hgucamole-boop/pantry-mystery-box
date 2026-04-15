@@ -2,8 +2,8 @@ export const plans = [
   {
     id: 'starter',
     name: 'Starter Crew',
-    unitMultiplier: 1,
-    price: 'S$199.99',
+    unitMultiplier: 0.75,
+    price: 'S$299.99',
     pax: '5-10 pax',
     caption: 'For startups',
     perHead: 'As low as S$10/head',
@@ -16,8 +16,8 @@ export const plans = [
   {
     id: 'team',
     name: 'Full Squad',
-    unitMultiplier: 2,
-    price: 'S$259.99',
+    unitMultiplier: 1,
+    price: 'S$349.99',
     pax: '10-20 pax',
     caption: 'Growing teams',
     perHead: 'As low as S$9/head',
@@ -30,8 +30,8 @@ export const plans = [
   {
     id: 'office',
     name: 'Office Legend',
-    unitMultiplier: 3,
-    price: 'S$319.99',
+    unitMultiplier: 2,
+    price: 'S$499.99',
     pax: '30-50 pax',
     caption: 'Large offices',
     perHead: 'Bulk savings unlocked',

@@ -9,7 +9,7 @@ const rarityClassMap = {
 export function ReelSnackItem({ item, isTarget, unitMultiplier = 1 }) {
   const rarityTone = rarityClassMap[item.rarity] || 'common';
   const quantity = (item.multiple || 1) * unitMultiplier;
-  const quantityLabel = Number.isInteger(quantity) ? `${quantity}` : quantity.toFixed(1).replace(/\.0$/, '');
+  const quantityLabel = `${Math.round(quantity)}`;
   const badgeTone = unitMultiplier >= 3 ? 'large' : unitMultiplier === 2 ? 'medium' : 'small';
 
   return (
