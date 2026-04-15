@@ -57,8 +57,8 @@ export function Navbar() {
             <Link href="/sustainability" className={`nav-link ${pathname === '/sustainability' ? 'active' : ''}`}>
               Our Story
             </Link>
-            <Link href="/gacha" className={`nav-link ${pathname === '/gacha' ? 'active' : ''}`}>
-              🎰 Lucky Drop
+            <Link href="/gacha" className={`nav-link nav-link-lucky ${pathname === '/gacha' ? 'active' : ''}`}>
+              <img src="/icons/arcade.svg" alt="Arcade icon" className="nav-link-icon" /> Lucky Drop
             </Link>
             <button
               type="button"

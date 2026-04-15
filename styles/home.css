@@ -623,6 +623,11 @@
   box-shadow: 0 20px 60px rgba(211, 168, 77, 0.24);
 }
 
+.pricing-card.selected:not(.popular) {
+  background: linear-gradient(160deg, rgba(236, 250, 241, 0.96), rgba(218, 244, 229, 0.94));
+  border-color: rgba(47, 133, 90, 0.58);
+}
+
 .popular-badge {
   position: absolute;
   top: -16px;

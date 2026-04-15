@@ -126,6 +126,20 @@ body {
   cursor: pointer;
 }
 
+.nav-link-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  object-fit: contain;
+  vertical-align: -0.1rem;
+  margin-right: 0.5rem;
+}
+
+.nav-link-lucky {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
 .nav-link:hover {
   color: var(--primary);
   background: rgba(63, 143, 118, 0.12);

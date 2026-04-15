@@ -1471,6 +1471,10 @@
   box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.28), 0 14px 30px rgba(24, 52, 42, 0.18);
 }
 
+.gacha-box-size-card.active .gacha-box-size-card-price {
+  color: #0a5e3c;
+}
+
 .gacha-box-size-card-emoji {
   width: 2.4rem;
   height: 2.4rem;

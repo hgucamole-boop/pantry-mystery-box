@@ -67,10 +67,11 @@ export function BoxSizeSelectionModal({
               >
                 <img className="gacha-box-size-card-emoji" src={boxIcon} alt={`${box.name} icon`} />
                 <div className="gacha-box-size-card-name">{box.name}</div>
-                <div className="gacha-box-size-card-pax">{box.pax}</div>
+                
                 <div className="gacha-box-size-card-price">{box.price}</div>
+                <div className="gacha-box-size-card-pax">{box.pax}</div>
                 {box.popular && (
-                  <div className="gacha-box-size-card-badge">✨ Popular</div>
+                  <div className="gacha-box-size-card-badge">Popular</div>
                 )}
               </button>
             );
