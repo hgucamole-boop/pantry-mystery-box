@@ -3,7 +3,7 @@ import '@/styles/globals.css';
 import GTMProvider from "@/app/components/GTMProvider"
 
 export const metadata = {
-  title: 'Snack Mystery Box - Surprise Snack Subscriptions for your office',
+  title: 'Pantry Mystery Box - Surprise Snack Subscriptions for your office',
   description: 'Discover rare imported snacks and drinks at 40-60% off.',
 };
 
