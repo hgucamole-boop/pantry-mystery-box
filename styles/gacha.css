@@ -963,7 +963,7 @@
   width: auto;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(98px, 116px);
+  grid-auto-columns: minmax(112px, 132px);
   gap: 0.4rem;
 }
 
@@ -972,7 +972,7 @@
   background: rgba(255, 255, 255, 0.92);
   color: #08462f;
   border-radius: 0.72rem;
-  padding: 0.44rem 0.42rem 0.4rem;
+  padding: 0.44rem 0.78rem 0.4rem;
   min-height: 86px;
   display: flex;
   flex-direction: column;
@@ -999,6 +999,10 @@
   color: #0a5e3c;
 }
 
+.gacha-size-btn.active .gacha-size-price-value {
+  color: #0a5e3c;
+}
+
 .gacha-size-btn.active .gacha-size-pax {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(47, 133, 90, 0.45);
@@ -1017,7 +1021,7 @@
 
 .gacha-size-name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--secondary);
   letter-spacing: 0.6px;
   line-height: 1;
@@ -1033,6 +1037,29 @@
   background: rgba(0, 217, 255, 0.1);
   border: 1px solid rgba(0, 217, 255, 0.3);
   padding: 0.12rem 0.34rem;
+}
+
+.gacha-size-price {
+  font-family: 'Bebas Neue', sans-serif;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.18rem;
+  font-size: 0.96rem;
+  line-height: 1;
+  letter-spacing: 0.7px;
+  color: var(--secondary);
+}
+
+.gacha-size-price-value {
+  color: inherit;
+}
+
+.gacha-size-period {
+  font-family: inherit;
+  font-size: 0.68rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: rgba(24, 52, 42, 0.62);
 }
 
 .gacha-results {
@@ -2209,11 +2236,11 @@
 
   .gacha-size-btn {
     width: max-content;
-    min-width: 112px;
+    min-width: 124px;
     min-height: 84px;
     border-width: 2px;
     border-radius: 0.65rem;
-    padding: 0.45rem 0.42rem 0.4rem;
+    padding: 0.45rem 0.8rem 0.4rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -2232,7 +2259,7 @@
   }
 
   .gacha-size-name {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     letter-spacing: 0.45px;
     text-align: center;
   }
@@ -2244,6 +2271,14 @@
     text-align: center;
     max-width: 100%;
     overflow-wrap: anywhere;
+  }
+
+  .gacha-size-price {
+    font-size: 0.84rem;
+  }
+
+  .gacha-size-period {
+    font-size: 0.58rem;
   }
 
   .gacha-signup-cta {
