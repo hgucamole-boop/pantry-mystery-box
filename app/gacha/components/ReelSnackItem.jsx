@@ -10,7 +10,7 @@ export function ReelSnackItem({ item, isTarget, unitMultiplier = 1 }) {
   const rarityTone = rarityClassMap[item.rarity] || 'common';
   const quantity = (item.multiple || 1) * unitMultiplier;
   const quantityLabel = `${Math.round(quantity)}`;
-  const badgeTone = unitMultiplier >= 3 ? 'large' : unitMultiplier === 2 ? 'medium' : 'small';
+  const badgeTone = unitMultiplier >= 2 ? 'large' : unitMultiplier === 1 ? 'medium' : 'small';
 
   return (
     <div className={`gacha-roller-item ${isTarget ? 'target' : 'decoy'}`}>
